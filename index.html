@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أكاديمية نجاح العملاء — رِواء</title>
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1A3A2A; --accent: #2ECC71;
+    --bg: #F0F3F7; --card: #fff; --text: #2C3E50;
+    --muted: #7F8C8D; --sbw: 230px; --r: 12px;
+  }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); direction: rtl; display: flex; min-height: 100vh; }
+
+  /* ── SIDEBAR ── */
+  #sb { width: var(--sbw); min-height: 100vh; background: var(--primary); position: fixed; right: 0; top: 0; overflow-y: auto; padding-bottom: 24px; z-index: 100; }
+  .sb-logo { background: rgba(0,0,0,.3); color: #fff; padding: 20px 16px; font-size: 1rem; font-weight: 700; line-height: 1.5; text-align: center; border-bottom: 2px solid var(--accent); }
+  .sb-logo small { font-size: .78rem; color: #a8d5b5; }
+  .nl { display: flex; align-items: center; gap: 9px; padding: 10px 14px; color: #c8e6d0; text-decoration: none; font-size: .84rem; border-right: 3px solid transparent; transition: all .2s; }
+  .nl:hover, .nl.active { background: rgba(255,255,255,.1); color: #fff; border-right-color: var(--accent); }
+
+  /* ── MAIN ── */
+  #main { margin-right: var(--sbw); padding: 22px 26px; flex: 1; }
+
+  /* ── HERO ── */
+  .hero { background: linear-gradient(135deg,#1A3A2A,#276843); border-radius: var(--r); padding: 36px; color: #fff; margin-bottom: 22px; position: relative; overflow: hidden; }
+  .hero h1 { font-size: 1.8rem; margin-bottom: 6px; }
+  .hero p { color: #a8d5b5; font-size: .95rem; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .hero-tag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 3px 12px; font-size: .78rem; color: #e0f0e8; }
+
+  /* ── PHONE TIP ── */
+  .phone-tip { background: #fff; border-radius: var(--r); padding: 18px 22px; margin-bottom: 22px; border-right: 5px solid #F39C12; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+  .phone-tip h3 { color: #784212; margin-bottom: 10px; font-size: 1rem; }
+  .phone-tip p { font-size: .9rem; line-height: 1.8; }
+
+  /* ── STAGE ── */
+  .stage { background: var(--card); border-radius: var(--r); margin-bottom: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.07); overflow: hidden; border-top: 4px solid var(--sc); }
+  .stage-hdr { display: flex; align-items: center; gap: 14px; padding: 18px 22px; color: #fff; }
+  .s-icon { font-size: 1.9rem; }
+  .s-title { font-size: 1.2rem; font-weight: 700; }
+  .s-num { margin-right: auto; font-size: 2.8rem; font-weight: 900; opacity: .2; }
+  .sub-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
+  .sub-badge { color: #fff; font-size: .72rem; padding: 2px 9px; border-radius: 10px; }
+
+  /* ── DURATION ── */
+  .duration-badge { display: flex; align-items: center; gap: 8px; padding: 9px 22px; background: #1A5276; color: #fff; font-size: .84rem; }
+  .dur-note { color: #85C1E9; font-size: .78rem; }
+
+  /* ── STAGE BODY ── */
+  .stage-body { padding: 18px 22px; }
+  .section-block { margin-bottom: 18px; padding: 16px; background: #F8FAFB; border-radius: 9px; }
+  .sec-title { font-size: .92rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid #ECF0F1; }
+
+  /* INFO BOX */
+  .info-box { border-radius: 9px; padding: 14px 16px; margin-bottom: 18px; font-size: .88rem; line-height: 1.8; }
+  .ib-title { font-weight: 700; margin-bottom: 6px; font-size: .94rem; }
+  .ib-bullet { padding-right: 8px; }
+
+  /* CHECKLIST */
+  .check-list { list-style: none; padding: 0; }
+  .check-item { padding: 6px 0; font-size: .86rem; border-bottom: 1px solid #ECF0F1; display: flex; align-items: flex-start; gap: 7px; }
+  .check-item:last-child { border-bottom: none; }
+  .cb { cursor: pointer; font-size: .95rem; color: var(--muted); user-select: none; }
+
+  /* SCRIPT */
+  .script-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .script-table thead th { background: var(--primary); color: #fff; padding: 7px 11px; font-weight: 600; text-align: right; }
+  .csr-row { background: #EAF2FF; }
+  .cust-row { background: #FDFEFE; }
+  .sp-cell { padding: 8px 11px; font-weight: 700; font-size: .8rem; white-space: nowrap; min-width: 90px; border-bottom: 1px solid #E8EEF2; }
+  .ln-cell { padding: 8px 11px; line-height: 1.6; border-bottom: 1px solid #E8EEF2; }
+
+  /* TEMPLATE */
+  .tpl-box { position: relative; background: #FFFEF0; border: 1px dashed #F0B429; border-radius: 8px; padding: 14px; }
+  .copy-btn { position: absolute; top: 8px; left: 8px; background: #F0B429; border: none; border-radius: 6px; padding: 4px 10px; font-size: .75rem; cursor: pointer; font-family: inherit; }
+  .copy-btn:hover { background: #D4A017; color: #fff; }
+  .copy-btn.ok { background: #27AE60; color: #fff; }
+  .tpl-body { font-size: .86rem; line-height: 1.9; margin-top: 26px; }
+
+  /* GUIDE TABLE */
+  .guide-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  .guide-table thead th { background: var(--primary); color: #fff; padding: 7px 11px; text-align: right; }
+  .guide-table tbody td { padding: 8px 11px; border-bottom: 1px solid #E8EEF2; vertical-align: top; }
+  .guide-table tbody tr:nth-child(even) { background: #F0F8FF; }
+  .tg-type { font-weight: 600; }
+  .tg-ex { color: var(--muted); font-size: .8rem; }
+
+  /* CRM */
+  .crm-sec { background: #F0FFF4; }
+  .crm-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .crm-k { padding: 7px 11px; font-weight: 600; color: #145A32; background: #D5F5E3; border-bottom: 1px solid #A9DFBF; width: 34%; }
+  .crm-v { padding: 7px 11px; border-bottom: 1px solid #A9DFBF; }
+
+  /* HEALTH */
+  .health-tbl { width: 100%; border-collapse: collapse; font-size: .86rem; }
+  .health-tbl thead th { background: #1A3A2A; color: #fff; padding: 9px 13px; text-align: right; }
+  .health-tbl tbody td { padding: 8px 13px; border-bottom: 1px solid #ECF0F1; vertical-align: top; }
+  .health-tbl tbody tr:nth-child(even) { background: #F8FAFB; }
+
+  @media (max-width:768px) { #sb { display: none; } #main { margin-right: 0; padding: 12px; } }
+
+
+  /* SECTOR TABS */
+  .sector-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+  .stab { padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px; background: #f8f8f8; cursor: pointer; font-family: inherit; font-size: .83rem; }
+  .stab.active { background: #1A3A2A; color: #fff; border-color: #1A3A2A; }
+  /* FOOTER */
+  .doc-footer { text-align: center; padding: 40px 20px 30px; margin-top: 10px; border-top: 2px solid #D5E8D4; }
+  .footer-icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .footer-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .footer-meta { font-size: .82rem; color: var(--muted); margin-bottom: 6px; }
+  .footer-note { font-size: .78rem; color: #AAB7B8; font-style: italic; }
+  @media print { #sb { display: none; } #main { margin-right: 0; } }
+
+
+
+  /* ── SS PICKER ── */
+  .ss-picker { display: flex; flex-direction: column; gap: 4px; }
+  .ss-pick-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 7px; cursor: pointer; font-size: .85rem; color: var(--text); border: 1px solid transparent; transition: all .15s; user-select: none; }
+  .ss-pick-item:hover { background: #D5F5E3; border-color: #A9DFBF; }
+  .ss-pick-item.selected { background: #1A3A2A; color: #fff; border-color: #145A32; }
+  .ss-pick-item.selected .ss-en { color: #A8D5B5; }
+  .ss-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .ss-en { color: var(--muted); font-size: .78rem; }
+  .ss-pick-item.selected .ss-dot { box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+
+  /* ── SUB-STAGE GUIDE ── */
+  .substage-sec { background: #F0F4F8; border: 1px solid #D6E4F0; }
+  .substage-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .substage-table thead th { padding: 8px 11px; text-align: right; color: #fff; font-size: .84rem; }
+  .substage-table tbody td { padding: 8px 11px; border-bottom: 1px solid #DDE8F0; vertical-align: top; line-height: 1.65; }
+  .substage-table tbody tr:hover { background: #E8F0F8 !important; }
+  .substage-table tbody tr:nth-child(even) { background: #EDF2F8; }
+  .ss-badge { display: inline-block; padding: 3px 10px; border-radius: 10px; color: #fff; font-size: .77rem; font-weight: 700; white-space: nowrap; }
+  .dept-pill { display: inline-block; padding: 2px 9px; border-radius: 5px; font-size: .77rem; font-weight: 600; white-space: nowrap; }
+  .note-tpl { background: #FFFEF0; border-right: 3px solid #F0B429; padding: 6px 9px; border-radius: 4px; font-size: .80rem; white-space: pre-line; line-height: 1.7; color: #5D4E1A; }
+  .substage-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; font-size: .78rem; align-items: center; }
+
+</style>
+</head>
+<body>
+
+    <nav id="sb" dir="rtl">
+      <div class="sb-logo">🏢 أكاديمية CSM<br><small>رِواء</small></div>
+      <a href="#phone-tip" class="nl"><span>📞</span><span>3CX والمقسم</span></a>
+<a href="#s1" class="nl"><span>🤝</span><span>تسليم العميل</span></a>
+<a href="#s2" class="nl"><span>📦</span><span>ملف المنتجات</span></a>
+<a href="#s3" class="nl"><span>🎓</span><span>التدريب</span></a>
+<a href="#s4" class="nl"><span>🏪</span><span>الجاهزية التجارية</span></a>
+<a href="#s5" class="nl"><span>📈</span><span>التشغيل</span></a>
+<a href="#s6" class="nl"><span>🏆</span><span>النمو</span></a>
+<a href="#s7" class="nl"><span>🔄</span><span>إعادة التفعيل</span></a>
+<a href="#health-section" class="nl"><span>❤️</span><span>Health Score</span></a>
+    </nav>
+<div id="main">
+
+  <div class="hero">
+    <h1>🏢 أكاديمية نجاح العملاء — رِواء</h1>
+    <p>المرجعية الكاملة لموظف CSM — كل مرحلة، كل سكريبت، كل سجل</p>
+    <div class="hero-tags"><span class="hero-tag">٧ مراحل</span><span class="hero-tag">سكريبتات جاهزة</span><span class="hero-tag">قوالب Intercom</span><span class="hero-tag">دليل المنتجات</span><span class="hero-tag">Health Score</span></div>
+  </div>
+
+  
+<div id="phone-tip" class="phone-tip" dir="rtl">
+  <h3>📞 المقسّم و 3CX — متى تستخدم كل منهما؟</h3>
+  <p>
+    <strong>القاعدة:</strong> ابدأ دائماً بالاتصال من <strong>المقسّم</strong>
+    إذا لم يرد العميل في أول محاولتين، جرّب من <strong>3CX</strong>
+  </p>
+</div>
+
+  
+    <section id="s1" class="stage" style="--sc:#1A3A2A">
+      <div class="stage-hdr" style="background:#1A3A2A">
+        <span class="s-icon">🤝</span>
+        <div>
+          <div class="s-title">تسليم العميل — HandOver</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#276843">عميل جديد للتسليم</span><span class="sub-badge" style="background:#1A5276">بانتظار الرد</span><span class="sub-badge" style="background:#784212">تعذّر التواصل</span><span class="sub-badge" style="background:#145A32">مكتمل</span></div>
+        </div>
+        <span class="s-num">١</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>٥ – ١٠ دقائق</strong></span>
+      <span class="dur-note">— مكالمة تعارف وتحديد احتياجات</span>
+    </div>
+      <div class="stage-body">
+            <div class="section-block">
+              <h4 class="sec-title">✅ ما يجب معرفته قبل الاتصال</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> اقرأ بيانات العميل كاملة   قبل الاتصال</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> راجع نوع الباقة والقطاع (Retail / F&B / Pharmacy / Services…)</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> تأكد من اسم المسؤول ورقم الجوال الصحيح</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> افتح ملف العميل في CRM جاهزاً قبل المكالمة</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> اعرف من قدّم العميل: Sales أم Direct Signup</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت المكالمة الأولى</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل] 👋، معك [اسمك] من فريق نجاح العملاء في رِواء.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">يسعدنا انضمامك لعائلة رِواء! 🎉 أنا المسؤول عنك طوال رحلتك معنا، وراح أكون مرجعك الأساسي وأنسّق معك مع باقي الفرق.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">عشان ننطلق بشكل صحيح، ودّي أفهم طبيعة نشاطك — كم فرع عندك؟ وما القطاع: تجزئة، مطاعم، خدمات؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز! وهل تستخدمون أي نظام حالياً؟ وعندكم بيانات مخزون موجودة؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">تمام. خطواتنا القادمة ثلاث: أولاً نجهّز ملف المنتجات، ثاني جلسة تدريب مع فريق التدريب، وثالث نتأكد من جاهزيتك للبدء. أنا بنسّق معك كل خطوة.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">راح أرسل لك رسالة على الواتس فيها ملخص المراحل. هل رقم [X] صحيح للتواصل؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">نعم / لا</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز، بانتظار ردك وأنا بخدمتك في أي وقت. وداعاً 🤝</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة البدء — جمع معلومات العميل</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="شكرًا لاشتراكك في رواء 🙏&#10;نحن هنا لمساعدتك في إعداد حسابك والبدء بأسرع وقت 🚀&#10;&#10;لإكمال الإعداد، نحتاج منك تجاوب على الأسئلة التالية:&#10;&#10;1️⃣ حالة النشاط:&#10;1- قائم&#10;2- تحت التجهيز&#10;&#10;2️⃣ هل المنتجات جاهزة؟&#10;1- جاهزة&#10;2- غير جاهزة&#10;&#10;3️⃣ هل تحتاج تدريب؟&#10;1- نعم&#10;2- لا&#10;&#10;4️⃣ هل هذا الرقم مناسب للتواصل؟&#10;1- نعم&#10;2- لا (يرجى تزويدنا بالرقم الصحيح)">📋 انسخ الرسالة</button>
+                <div class="tpl-body">شكرًا لاشتراكك في رواء 🙏<br>نحن هنا لمساعدتك في إعداد حسابك والبدء بأسرع وقت 🚀<br><br>لإكمال الإعداد، نحتاج منك تجاوب على الأسئلة التالية:<br><br>1️⃣ حالة النشاط:<br>1- قائم<br>2- تحت التجهيز<br><br>2️⃣ هل المنتجات جاهزة؟<br>1- جاهزة<br>2- غير جاهزة<br><br>3️⃣ هل تحتاج تدريب؟<br>1- نعم<br>2- لا<br><br>4️⃣ هل هذا الرقم مناسب للتواصل؟<br>1- نعم<br>2- لا (يرجى تزويدنا بالرقم الصحيح)</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة الاطمئنان — تعريف بمدير الحساب</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حيّاك الله 👋&#10;معك [الاسم]، مدير حسابك في شركة رِواء.&#10;&#10;تنبيه بخصوص حسابك في رِواء:&#10;إذا واجهتك صعوبة في إكمال إعداد الحساب أو ظهرت لك رسالة خطأ،&#10;*رد على هذه الرسالة وسأساعدك مباشرة.*&#10;&#10;أوقات تواصلي: الأحد إلى الخميس، 9:00 صباحًا إلى 5:30 مساءً&#10;والدعم الفني متاح من داخل المنصة في أي وقت.">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حيّاك الله 👋<br>معك [الاسم]، مدير حسابك في شركة رِواء.<br><br>تنبيه بخصوص حسابك في رِواء:<br>إذا واجهتك صعوبة في إكمال إعداد الحساب أو ظهرت لك رسالة خطأ،<br>*رد على هذه الرسالة وسأساعدك مباشرة.*<br><br>أوقات تواصلي: الأحد إلى الخميس، 9:00 صباحًا إلى 5:30 مساءً<br>والدعم الفني متاح من داخل المنصة في أي وقت.</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#1A3A2A">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#276843">تم الترحيب</span><br><small style="color:#7F8C8D;font-size:.74rem">Welcomed</small></td>
+        <td>بعد إرسال رسالتَي البدء والاطمئنان — العميل استقبل الرسائل</td>
+        <td>انتظر رد العميل — تابع بمكالمة بعد 24–48 ساعة إذا لم يرد</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">تم الترحيب ✅
+أُرسلت: رسالة البدء + رسالة الاطمئنان
+بانتظار رد العميل</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#784212">لا يوجد رد</span><br><small style="color:#7F8C8D;font-size:.74rem">No Response</small></td>
+        <td>2–3 محاولات تواصل (مكالمة + واتس) بلا رد</td>
+        <td>جرّب المقسّم أولاً ثم 3CX — أرسل واتس — بعد 5 أيام صعّد للـ Team Lead</td>
+        <td><span class="dept-pill" style="color:#784212;background:#FDEBD0">⚠️ Team Lead بعد 5 أيام</span></td>
+        <td><div class="note-tpl">[عدد] محاولات بلا رد
+آخر محاولة: [التاريخ]
+الوسيلة: مكالمة + واتس</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">طلب استرداد</span><br><small style="color:#7F8C8D;font-size:.74rem">Requested Refund</small></td>
+        <td>طلب العميل صراحةً الاسترداد أو الإلغاء</td>
+        <td>استمع للسبب — لا تعد بشيء — سجّل السبب كاملاً — نسّق فوراً مع فريق المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 الارجاع</span></td>
+        <td><div class="note-tpl">طلب استرداد
+السبب: [السبب بالتفصيل]
+تنسيق مع: فريق الارجاع
+تاريخ الطلب: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم إتمام التسليم</span><br><small style="color:#7F8C8D;font-size:.74rem">Handover is Done</small></td>
+        <td>اكتمل التعارف — جُمعت المعلومات — العميل جاهز للمرحلة التالية</td>
+        <td>انتقل فوراً لمرحلة Inventory Checkup</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">اكتمل التسليم ✅
+القطاع: [القطاع]
+عدد الفروع: [عدد]
+يوجد مخزون: نعم / لا</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">في خطر</span><br><small style="color:#7F8C8D;font-size:.74rem">At Risk</small></td>
+        <td>العميل متذمر / يرفض التواصل / إشارات سلبية واضحة</td>
+        <td>🔴 تصعيد فوري للـ Team Lead — وثّق الموقف كاملاً في النوت</td>
+        <td><span class="dept-pill" style="color:#922B21;background:#FADBD8">🔴 Team Lead — فوري</span></td>
+        <td><div class="note-tpl">🔴 تصعيد — Team Lead
+السبب: [السبب]
+الوضع: [ما حدث]
+الإجراء: [ما قمت به]
+المطلوب: متابعة عاجلة</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#7D6608">النشاط غير جاهز</span><br><small style="color:#7F8C8D;font-size:.74rem">Business is Not Ready</small></td>
+        <td>النشاط التجاري لم يبدأ / العميل في مرحلة التجهيز</td>
+        <td>اسأل عن العائق المحدد — حدد موعد المتابعة — سجّل السبب في النوت</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">النشاط غير جاهز
+السبب: [السبب]
+موعد المتابعة: [التاريخ]</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">CSM Handover</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s1">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#276843"></span> تم الترحيب <span class="ss-en">— Welcomed</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#784212"></span> لا يوجد رد <span class="ss-en">— No Response</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> طلب استرداد <span class="ss-en">— Requested Refund</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم إتمام التسليم <span class="ss-en">— Handover is Done</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> في خطر <span class="ss-en">— At Risk</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#7D6608"></span> النشاط غير جاهز <span class="ss-en">— Business is Not Ready</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">سجّل ملخص المكالمة الأولى: القطاع، عدد الفروع، هل لديه مخزون جاهز</td></tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s2" class="stage" style="--sc:#1A5276">
+      <div class="stage-hdr" style="background:#1A5276">
+        <span class="s-icon">📦</span>
+        <div>
+          <div class="s-title">ملف المنتجات — Inventory</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#2874A6">تحديد القالب</span><span class="sub-badge" style="background:#1A5276">بانتظار ملف العميل</span><span class="sub-badge" style="background:#784212">ملف غير جاهز</span><span class="sub-badge" style="background:#145A32">تم التسليم لفريق البيانات</span></div>
+        </div>
+        <span class="s-num">٢</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>٣ – ٧ دقائق</strong></span>
+      <span class="dur-note">— فهم النشاط وتوجيه العميل للقالب الصحيح</span>
+    </div>
+      <div class="stage-body">
+    <div class="info-box" style="background:#EAF2FF;border-right:4px solid #2874A6">
+      <div class="ib-title">ℹ️ دور موظف نجاح العملاء في مرحلة المنتجات</div>
+      <p>موظف نجاح العملاء لا يرفع المنتجات بنفسه — هذا دور فريق البيانات.</p><p>لكن دوره هو:</p><p class="ib-bullet">• فهم نشاط العميل وطرح الأسئلة الصحيحة</p><p class="ib-bullet">• تحديد نوع القالب المناسب بناءً على النشاط</p><p class="ib-bullet">• إرسال القالب وشرحه للعميل</p><p class="ib-bullet">• التنسيق مع فريق البيانات لاستلام الملف ورفعه</p>
+    </div>
+            <div class="section-block">
+              <h4 class="sec-title">✅ أسئلة لفهم نشاط العميل قبل اختيار القالب</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> ما نوع النشاط؟ (ملابس، مطعم، صيدلية، خضار، خدمات…)</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل عنده فواتير شراء سابقة؟ أم يبدأ من الصفر؟</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> كم عدد الفروع؟ (فرع واحد أم أكثر؟)</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل عنده ربط مع متاجر إلكترونية (سلة / زد)؟</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل الأسعار شاملة الضريبة أم لا؟</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل لديه منتجات تبغية؟</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل لديه أسعار مختلفة لتطبيقات التوصيل؟</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> هل يستخدم ميزاناً إلكترونياً للمنتجات الموزونة؟</li></ul>
+            </div>
+    <div class="section-block">
+      <h4 class="sec-title">🗂️ دليل اختيار القالب المناسب</h4>
+      <table class="guide-table">
+        <thead><tr><th>نوع القالب</th><th>متى تستخدمه؟</th><th>مثال</th></tr></thead>
+        <tbody><tr><td class="tg-type">⚡ استيراد سريع</td><td>منتجات بسيطة، فرع واحد (70% من العملاء)</td><td class="tg-ex">محل ملابس بسيط، كافيه صغير</td></tr><tr><td class="tg-type">📦 قالب بسيط / بحزمة</td><td>منتجات أساسية أو تُباع بحزم</td><td class="tg-ex">قطعة / كرتون / درزن</td></tr><tr><td class="tg-type">🎨 قالب متعدد</td><td>منتج واحد له أكثر من خيار</td><td class="tg-ex">ملابس بمقاسات وألوان</td></tr><tr><td class="tg-type">🧺 قالب مجمّع</td><td>منتجات مركبة أو عروض جاهزة</td><td class="tg-ex">سلة رمضانية، وجبة</td></tr><tr><td class="tg-type">🔢 قالب متتبع</td><td>منتجات تحتاج رقم تسلسلي أو دفعة</td><td class="tg-ex">أدوية، أجهزة إلكترونية</td></tr><tr><td class="tg-type">🍕 قالب المطاعم</td><td>خاص بالمطاعم والكافيهات</td><td class="tg-ex">منيو مع خيارات وإضافات</td></tr><tr><td class="tg-type">🛒 قالب السوبرماركت</td><td>متاجر متعددة الأصناف والفروع</td><td class="tg-ex">هايبرماركت، بقالة كبيرة</td></tr><tr><td class="tg-type">💊 قالب الصيدليات</td><td>منتجات الصيدلية والرعاية الصحية</td><td class="tg-ex">أدوية وصحة ومستلزمات</td></tr></tbody>
+      </table>
+    </div>
+            <div class="section-block">
+              <h4 class="sec-title">✅ تنبيهات مهمة عند مراجعة ملف العميل</h4>
+              <ul class="check-list"><li class="check-item"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الرمز التعريفي (SKU/Barcode) لكل منتج لازم يكون فريد وغير مكرر</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> إذا العميل ما عنده باركود ، يمكن توليد أرقام عشوائية من طرفنا</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> التكلفة لازم تكون غير شاملة الضريبة</li><span class="cb" onclick="toggleCheck(this)">☐</span> حمّل نسخة من منتجات العميل واحفظها في النوت قبل أي تعديل أو حذف ⚠️</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت مكالمة تحديد القالب</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">اليوم راح نحدد القالب المناسب لملف منتجاتك عشان نرسله لفريق البيانات.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">كم عدد المنتجات تقريباً عندك؟ وهل عندك فرع واحد أم أكثر؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">وهل عندك ملف Excel بالمنتجات الحالية؟ أو راح تبدأ من الصفر؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز. بناءً على نشاطك، القالب المناسب لك هو [نوع القالب]. راح أرسله لك الحين مع شرح بسيط.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">بعد ما تجهّز الملف، أرسله لي وأنا أنسّق مع فريق البيانات عشان يرفعوه على حسابك. 🤝</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة إرسال قالب المنتجات</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله [اسم العميل]، 👋&#10;&#10;بناءً على نوع نشاطك، القالب المناسب لك هو: [نوع القالب] 📎&#10;&#10;يمكنك تعبئة الملف بالمعلومات التالية:&#10;✅ اسم المنتج (مطلوب)&#10;✅ الرمز التعريفي / الباركود (إن وجد)&#10;✅ الكمية الحالية&#10;✅ سعر البيع&#10;✅ التكلفة (إن توفرت — غير شاملة الضريبة)&#10;&#10;فقط.&#10;&#10;بعد ما تجهّز الملف، أرسله لي وأنا أتابع مع فريق البيانات لرفعه على حسابك بأسرع وقت. 🙏">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله [اسم العميل]، 👋<br><br>بناءً على نوع نشاطك، القالب المناسب لك هو: [نوع القالب] 📎<br><br>يمكنك تعبئة الملف بالمعلومات التالية:<br>✅ اسم المنتج (مطلوب)<br>✅ الرمز التعريفي / الباركود (إن وجد)<br>✅ الكمية الحالية<br>✅ سعر البيع<br>✅ التكلفة (إن توفرت — غير شاملة الضريبة)<br><br>بعد ما تجهّز الملف، أرسله لي وأنا أتابع مع فريق البيانات لرفعه على حسابك بأسرع وقت. 🙏</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#1A5276">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#2874A6">قيد التنفيذ</span><br><small style="color:#7F8C8D;font-size:.74rem">In Progress</small></td>
+        <td>أُرسل القالب للعميل — بانتظار إعداد الملف</td>
+        <td>تابع كل 48 ساعة — إذا تأخر أكثر من أسبوع انتقل لـ «في خطر»</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">قالب [نوع القالب] أُرسل
+بانتظار ملف العميل
+تاريخ الإرسال: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">طلب استرداد</span><br><small style="color:#7F8C8D;font-size:.74rem">Requested Refund</small></td>
+        <td>طلب الاسترداد في مرحلة المخزون</td>
+        <td>استمع للسبب — لا تعد بشيء — نسّق فوراً مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 الارجاع</span></td>
+        <td><div class="note-tpl">طلب استرداد — مرحلة: Inventory
+السبب: [السبب]
+تنسيق مع: فريق الارجاع</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#784212">تم الإرجاع للمبيعات</span><br><small style="color:#7F8C8D;font-size:.74rem">Reverted Back to Sales</small></td>
+        <td>العميل يطلب تعديل الباقة / التسعير / العقد</td>
+        <td>لا تتفاوض بنفسك — نسّق مباشرة مع فريق المبيعات وزوّدهم بالتفاصيل</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 المبيعات</span></td>
+        <td><div class="note-tpl">العميل يطلب مراجعة الباقة
+السبب: [السبب]
+تم التحويل: فريق المبيعات
+تاريخ: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">في خطر</span><br><small style="color:#7F8C8D;font-size:.74rem">At Risk</small></td>
+        <td>تأخر الملف أكثر من أسبوع / العميل لا يرد</td>
+        <td>🔴 تصعيد للـ Team Lead — تواصل بطريقة مختلفة</td>
+        <td><span class="dept-pill" style="color:#922B21;background:#FADBD8">🔴 Team Lead</span></td>
+        <td><div class="note-tpl">🔴 تصعيد
+تأخر ملف المنتجات [عدد] أيام
+السبب: [السبب]
+المطلوب: متابعة</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم الفحص</span><br><small style="color:#7F8C8D;font-size:.74rem">Checkup is Done</small></td>
+        <td>فريق البيانات رفع المنتجات — العميل تأكّد من صحتها</td>
+        <td>تأكد شخصياً مع العميل — انتقل لمرحلة Training</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">تم رفع المنتجات ✅
+عدد المنتجات: [عدد]
+تأكيد العميل: نعم
+جاهز للتدريب</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Inventory Checkup</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s2">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#2874A6"></span> قيد التنفيذ <span class="ss-en">— In Progress</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> طلب استرداد <span class="ss-en">— Requested Refund</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#784212"></span> تم الإرجاع للمبيعات <span class="ss-en">— Reverted Back to Sales</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> في خطر <span class="ss-en">— At Risk</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم الفحص <span class="ss-en">— Checkup is Done</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">نوع القالب المُرسَل، حالة الملف، أي تنبيه على البيانات (باركود، ضريبة، فروع)</td></tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s3" class="stage" style="--sc:#4A235A">
+      <div class="stage-hdr" style="background:#4A235A">
+        <span class="s-icon">🎓</span>
+        <div>
+          <div class="s-title">التدريب — Training</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#7D3C98">رابط الحجز أُرسل</span><span class="sub-badge" style="background:#784212">تأجيل من العميل</span><span class="sub-badge" style="background:#922B21">تعذّر التواصل</span><span class="sub-badge" style="background:#145A32">مكتمل</span></div>
+        </div>
+        <span class="s-num">٣</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>٣ – ١٢ دقيقة</strong></span>
+      <span class="dur-note">— تنسيق موعد الجلسة والمتابعة</span>
+    </div>
+      <div class="stage-body">
+    <div class="info-box" style="background:#F5EEF8;border-right:4px solid #7D3C98">
+      <div class="ib-title">ℹ️ دور موظف نجاح العملاء في مرحلة التدريب</div>
+      <p>التدريب يكون مع فريق التدريب المتخصص — وليس من مهام موظف نجاح العملاء.</p><p>دور موظف نجاح العملاء هو:</p><p class="ib-bullet">• إرسال رابط حجز الجلسة للعميل مع توجيهه لاختيار قطاعه</p><p class="ib-bullet">• المتابعة للتأكد من حضور العميل</p><p class="ib-bullet">• إرسال رابط التسجيل بعد الجلسة إن طلب العميل ذلك</p>
+    </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة إرسال رابط حجز التدريب (من موظف نجاح العملاء)</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="مرحبًا 👋&#10;&#10;بخصوص إعداد حسابك في رِواء: نحتاج نحدد جلسة تدريب لإكمال الإعداد حسب قطاعك.&#10;&#10;سجّل الآن عبر الرابط في الأسفل، واختر قطاعك:&#10;🛒 تجزئة&#10;🍕 مطاعم ومقاهي&#10;🏖 خدمات&#10;&#10;ثم اختر الوقت المناسب 🕓&#10;&#10;📌 ملاحظة: إذا حضرت من جهاز الكاشير، استخدم سماعات خارجية أو احضر من جهازك الشخصي.&#10;&#10;[ سجّل الآن ]&#10;&#10;تحياتنا، فريق نجاح العملاء في رِواء 🤝">📋 انسخ الرسالة</button>
+                <div class="tpl-body">مرحبًا 👋<br><br>بخصوص إعداد حسابك في رِواء: نحتاج نحدد جلسة تدريب لإكمال الإعداد حسب قطاعك.<br><br>سجّل الآن عبر الرابط في الأسفل، واختر قطاعك:<br>🛒 تجزئة<br>🍕 مطاعم ومقاهي<br>🏖 خدمات<br><br>ثم اختر الوقت المناسب 🕓<br><br>📌 ملاحظة: إذا حضرت من جهاز الكاشير، استخدم سماعات خارجية أو احضر من جهازك الشخصي.<br><br>[ سجّل الآن ]<br><br>تحياتنا، فريق نجاح العملاء في رِواء 🤝</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة التذكير بالجلسة (من فريق التدريب)</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله 👋🏻&#10;&#10;تذكير بخصوص اشتراكك في رِواء:&#10;عندك *جلسة تدريب* باللغة العربية مشمولة ضمن اشتراكك.&#10;&#10;لحجز جلستك، بإمكانك الاطلاع على المواعيد بالأسفل 👇🏻&#10;&#10;[ مواعيد الجلسات التدريبية ]">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله 👋🏻<br><br>تذكير بخصوص اشتراكك في رِواء:<br>عندك *جلسة تدريب* باللغة العربية مشمولة ضمن اشتراكك.<br><br>لحجز جلستك، بإمكانك الاطلاع على المواعيد بالأسفل 👇🏻<br><br>[ مواعيد الجلسات التدريبية ]</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة إرسال تسجيل الجلسة (بعد التدريب)</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="تقدر توصل للجلسة التدريبية الخاصة فيك من هذا الرابط: 🎥&#10;(الرابط)&#10;&#10;⚠️ ملاحظة مهمة: الفيديو ينحذف تلقائيًا بعد 24 ساعة من انتهاء الجلسة، فتأكد إنك تنزّله عندك عشان تقدر ترجع له وقت تحتاجه.&#10;&#10;لو عندك أي استفسار، فريقنا بخدمتك:&#10;📱 واتس أب: https://wa.me/9668001244020&#10;📞 الاتصال: 8001244020 (تحويلة 2)">📋 انسخ الرسالة</button>
+                <div class="tpl-body">تقدر توصل للجلسة التدريبية الخاصة فيك من هذا الرابط: 🎥<br>(الرابط)<br><br>⚠️ ملاحظة مهمة: الفيديو ينحذف تلقائيًا بعد 24 ساعة من انتهاء الجلسة، فتأكد إنك تنزّله عندك عشان تقدر ترجع له وقت تحتاجه.<br><br>لو عندك أي استفسار، فريقنا بخدمتك:<br>📱 واتس أب: https://wa.me/9668001244020<br>📞 الاتصال: 8001244020 (تحويلة 2)</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت المتابعة — لم يحجز بعد</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">اتواصلت معك عشان أذكّرك بجلسة التدريب — رسلنا لك رابط الحجز ولحد الآن ما اتحجزت الجلسة.</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM — لم يرَ الرسالة</td><td class="ln-cell">ما في مشكلة، راح أعيد إرساله الحين. الجلسة بتفرق كثير في فهم المنصة. 🎯</td></tr><tr class="csr-row"><td class="sp-cell">CSM — أجّل</td><td class="ln-cell"> ما في مشكلة! المواعيد تتجدد أسبوعياً — راح أعيد لك رابط الحجز وتختار الوقت اللي يناسبك حسب قطاعك. 🗓️
+
+</td></tr><tr class="csr-row"><td class="sp-cell">CSM — حجز</td><td class="ln-cell">ممتاز! فريق التدريب راح يكون معك. أي شيء تحتاجه بعدين، أنا هنا. 🤝</td></tr></tbody>
+              </table>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#4A235A">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#7D3C98">تمت دعوة لندوة</span><br><small style="color:#7F8C8D;font-size:.74rem">Webinar Invitation Sent</small></td>
+        <td>أُرسل رابط الحجز — بانتظار تأكيد العميل</td>
+        <td>تابع الحجز خلال 48 ساعة — أعِد الإرسال إذا لم يرد</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">أُرسل رابط الحجز
+تاريخ الإرسال: [التاريخ]
+الحجز: تم / لم يتم بعد</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#6C3483">جلسة فردية مجانية</span><br><small style="color:#7F8C8D;font-size:.74rem">Free 1on1</small></td>
+        <td>العميل يحتاج جلسة فردية مجانية</td>
+        <td>نسّق مع فريق التدريب لتحديد موعد — أبلغ العميل</td>
+        <td><span class="dept-pill" style="color:#4A235A;background:#EDE7F6">🔗 فريق التدريب</span></td>
+        <td><div class="note-tpl">جلسة 1on1 مجانية
+تنسيق مع: فريق التدريب
+الموعد: [التاريخ والوقت]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#512E5F">جلسة فردية مدفوعة</span><br><small style="color:#7F8C8D;font-size:.74rem">Paid 1on1</small></td>
+        <td>العميل يحتاج جلسة فردية مدفوعة</td>
+        <td>وثّق موافقة العميل الصريحة — نسّق مع فريق التدريب والمالية</td>
+        <td><span class="dept-pill" style="color:#4A235A;background:#EDE7F6">🔗 التدريب + المالية</span></td>
+        <td><div class="note-tpl">جلسة 1on1 مدفوعة
+موافقة العميل: نعم ✅
+تنسيق مع: التدريب + المالية
+الموعد: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#4A235A">زيارة ميدانية مجانية</span><br><small style="color:#7F8C8D;font-size:.74rem">Free Field Visit</small></td>
+        <td>العميل يحتاج زيارة ميدانية في موقعه</td>
+        <td>نسّق مع فريق التدريب — تأكد من جاهزية العميل قبل الزيارة</td>
+        <td><span class="dept-pill" style="color:#4A235A;background:#EDE7F6">🔗 فريق التدريب</span></td>
+        <td><div class="note-tpl">زيارة ميدانية مجانية
+العنوان: [العنوان]
+الموعد: [التاريخ]
+تنسيق مع: فريق التدريب</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">في خطر</span><br><small style="color:#7F8C8D;font-size:.74rem">At Risk</small></td>
+        <td>رفض التدريب / لا يرد / تجاوز أسبوعين بلا تأكيد</td>
+        <td>🔴 تصعيد للـ Team Lead — وثّق عدد المحاولات</td>
+        <td><span class="dept-pill" style="color:#922B21;background:#FADBD8">🔴 Team Lead</span></td>
+        <td><div class="note-tpl">🔴 تصعيد
+لم يحجز التدريب
+عدد المحاولات: [عدد]
+السبب: [إن عُرف]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">طلب استرداد</span><br><small style="color:#7F8C8D;font-size:.74rem">Requested Refund</small></td>
+        <td>طلب الاسترداد قبل أو بعد التدريب</td>
+        <td>استمع للسبب — اسأل إن كانت مشكلة في الجلسة — نسّق مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 الارجاع</span></td>
+        <td><div class="note-tpl">طلب استرداد — مرحلة: Training
+السبب: [السبب]
+مشكلة في الجلسة؟ نعم / لا</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم التدريب</span><br><small style="color:#7F8C8D;font-size:.74rem">Training is Done</small></td>
+        <td>حضر الجلسة وأكملها</td>
+        <td>أرسل رابط التسجيل فوراً — انتقل لـ Business Readiness</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">اكتمل التدريب ✅
+نوع الجلسة: [ويبنار / 1on1 / زيارة]
+تاريخ الجلسة: [التاريخ]
+رابط التسجيل: أُرسل</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Training</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s3">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#7D3C98"></span> تمت دعوة لندوة <span class="ss-en">— Webinar Invitation Sent</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#6C3483"></span> جلسة فردية مجانية <span class="ss-en">— Free 1on1</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#512E5F"></span> جلسة فردية مدفوعة <span class="ss-en">— Paid 1on1</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#4A235A"></span> زيارة ميدانية مجانية <span class="ss-en">— Free Field Visit</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> في خطر <span class="ss-en">— At Risk</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> طلب استرداد <span class="ss-en">— Requested Refund</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم التدريب <span class="ss-en">— Training is Done</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">هل أرسل الرابط؟ هل حجز العميل؟ هل حضر؟ نوع الجلسة (ويبنار / 1on1)</td></tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s4" class="stage" style="--sc:#784212">
+      <div class="stage-hdr" style="background:#784212">
+        <span class="s-icon">🏪</span>
+        <div>
+          <div class="s-title">الجاهزية التجارية — Business Readiness</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#276843">جاهزية مكتملة</span><span class="sub-badge" style="background:#922B21">مشكلة تقنية</span><span class="sub-badge" style="background:#6C3483">ميزة مفقودة</span><span class="sub-badge" style="background:#784212">تأجيل من العميل</span><span class="sub-badge" style="background:#1A5276">تعذّر التواصل</span></div>
+        </div>
+        <span class="s-num">٤</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>٨ – ١٥ دقيقة</strong></span>
+      <span class="dur-note">— فحص شامل لإعدادات المحل</span>
+    </div>
+      <div class="stage-body">
+            <div class="section-block">
+              <h4 class="sec-title">✅ قائمة فحص الجاهزية التجارية</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> المنتجات مرفوعة وصحيحة ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الكاشير مثبّت ويعمل ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الفاتورة الإلكترونية مفعّلة (ZATCA) ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الطابعة متصلة وتطبع بشكل صحيح ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الباركود يقرأ بشكل صحيح ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الأذونات والمستخدمين مضبوطة ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> العميل جرّب أول عملية بيع تجريبية ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> المحاسبة مفعّلة (إن كانت ضمن الباقة) ✅</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت مكالمة فحص الجاهزية</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">اتواصلت معك اليوم عشان نتأكد إنك جاهز للبدء بشكل كامل قبل أول يوم فعلي.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">هل جرّبت تعمل عملية بيع تجريبية من الكاشير؟ وهل الفاتورة طلعت صح؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM — جاهز</td><td class="ln-cell">ممتاز! كل شيء تمام. راح أتابع معك خلال الأسبوعين القادمين. أنا بخدمتك دائمًا 🤝</td></tr><tr class="csr-row"><td class="sp-cell">CSM — مشكلة تقنية</td><td class="ln-cell">فاهم، خلّني أنسّق مع فريق الدعم الفني الحين عشان يحلوها لك بأسرع وقت.</td></tr><tr class="csr-row"><td class="sp-cell">CSM — طلب ميزة</td><td class="ln-cell">نتفهم حاجتك. تقدر ترفع الاقتراح عبر منصة الاقتراحات وفريق التطوير راح يراجعه. 🔗</td></tr><tr class="csr-row"><td class="sp-cell">CSM — تأجيل</td><td class="ln-cell">ما في مشكلة. إيمتى تتوقع تكون جاهزاً؟ راح أتواصل معك في ذلك الوقت.</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة تأكيد الجاهزية</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="مبروك انطلاق نشاطك على رِواء! 🎉&#10;&#10;حياك الله [اسم العميل]،&#10;تأكدنا من جاهزيتك التجارية الكاملة:&#10;✅ المنتجات مرفوعة&#10;✅ الكاشير يعمل&#10;✅ الفواتير الإلكترونية مفعّلة&#10;&#10;راح أتابع معك خلال الأسبوعين القادمين لضمان تجربة سلسة.&#10;أي استفسار، أنا هنا بخدمتك دائمًا 🤝">📋 انسخ الرسالة</button>
+                <div class="tpl-body">مبروك انطلاق نشاطك على رِواء! 🎉<br><br>حياك الله [اسم العميل]،<br>تأكدنا من جاهزيتك التجارية الكاملة:<br>✅ المنتجات مرفوعة<br>✅ الكاشير يعمل<br>✅ الفواتير الإلكترونية مفعّلة<br><br>راح أتابع معك خلال الأسبوعين القادمين لضمان تجربة سلسة.<br>أي استفسار، أنا هنا بخدمتك دائمًا 🤝</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة اقتراح ميزة غير موجودة</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="نتفهم حاجتك لمميزات جديدة في المنصة، وحابين نسمع منك! 💭&#10;&#10;شاركنا أفكارك ومقترحاتك على منصة الاقتراحات. 🔗&#10;https://s.rewaa.com/3o4p&#10;&#10;فريق التطوير راح يراجع كل المقترحات ويقيّمها حسب أهميتها.&#10;ما نوعدك ننفذ كل الاقتراحات، لكن نأكد لك أن كل فكرة توصلنا تُدرس بعناية.">📋 انسخ الرسالة</button>
+                <div class="tpl-body">نتفهم حاجتك لمميزات جديدة في المنصة، وحابين نسمع منك! 💭<br><br>شاركنا أفكارك ومقترحاتك على منصة الاقتراحات. 🔗<br>https://s.rewaa.com/3o4p<br><br>فريق التطوير راح يراجع كل المقترحات ويقيّمها حسب أهميتها.<br>ما نوعدك ننفذ كل الاقتراحات، لكن نأكد لك أن كل فكرة توصلنا تُدرس بعناية.</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#784212">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#784212">النشاط غير جاهز</span><br><small style="color:#7F8C8D;font-size:.74rem">Business is Not Ready</small></td>
+        <td>اكتمل التدريب لكن لم يبدأ التشغيل بعد</td>
+        <td>حدّد بالضبط ما يمنع البدء — استخدم قائمة الفحص</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">النشاط غير جاهز
+العائق: [السبب المحدد]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#7D6608">تأخير من العميل</span><br><small style="color:#7F8C8D;font-size:.74rem">Delayed by Customer</small></td>
+        <td>التأخير من جهة العميل (انشغال / سفر / ظروف)</td>
+        <td>لا تضغط — حدد موعد متابعة — سجّله في النوت</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">تأجيل من العميل
+السبب: [السبب]
+موعد المتابعة: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#6C3483">ميزة مفقودة</span><br><small style="color:#7F8C8D;font-size:.74rem">Missing Feature</small></td>
+        <td>يحتاج ميزة غير موجودة في المنصة</td>
+        <td>أرسل للعميل رابط منصة الاقتراحات — وثّق اسم الميزة في النوت</td>
+        <td><span class="dept-pill" style="color:#6C3483;background:#EDE7F6">📋 منصة الاقتراحات</span></td>
+        <td><div class="note-tpl">طُلبت ميزة: [اسم الميزة]
+أُرسل رابط الاقتراحات للعميل ✅
+https://s.rewaa.com/3o4p</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">مشكلة تقنية</span><br><small style="color:#7F8C8D;font-size:.74rem">Technical Issue</small></td>
+        <td>مشكلة تقنية تمنع بدء العمل</td>
+        <td>🎫 ارفع تذكرة في CRM فوراً بتفاصيل كاملة — تابع يومياً — بلّغ العميل بالتطورات — لا تغلق التذكرة حتى يُحل الأمر كلياً</td>
+        <td><span class="dept-pill" style="color:#C0392B;background:#FADBD8">🎫 تذكرة في CRM</span></td>
+        <td><div class="note-tpl">🎫 مشكلة تقنية
+الوصف: [تفاصيل المشكلة]
+رقم التذكرة: #
+تاريخ الرفع: [التاريخ]
+آخر تحديث: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#1A5276">يستخدم نظاماً مختلفاً</span><br><small style="color:#7F8C8D;font-size:.74rem">Using Different System</small></td>
+        <td>العميل يستخدم نظاماً آخر موازياً أو بديلاً</td>
+        <td>اسأل عن السبب — إذا هناك مشكلة واضحة نسّق مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 المبيعات</span></td>
+        <td><div class="note-tpl">يستخدم نظام: [اسم النظام]
+السبب: [السبب]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#E67E22">تأخير من رواء باي</span><br><small style="color:#7F8C8D;font-size:.74rem">Delayed by Rewaapay</small></td>
+        <td>تأخير بسبب إعداد أو مشكلة في خدمة Rewaapay</td>
+        <td>🔗 تواصل مباشرة مع فريق Rewaapay — ارفع تذكرة في CRM إذا لم يُحل خلال 48 ساعة — تابع بنفسك حتى الحل</td>
+        <td><span class="dept-pill" style="color:#E67E22;background:#FEF9E7">🔗 فريق Rewaapay + 🎫</span></td>
+        <td><div class="note-tpl">تأخير Rewaapay
+المشكلة: [التفاصيل]
+تنسيق مع: فريق Rewaapay
+تاريخ التنسيق: [التاريخ]
+رقم التذكرة: # (إن رُفعت)</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">تأخير بسبب الأجهزة</span><br><small style="color:#7F8C8D;font-size:.74rem">Delayed by Hardware</small></td>
+        <td>الهاردوير ناقص أو معطل (كاشير / طابعة / باركود)</td>
+        <td>🎫 ارفع تذكرة في CRM بتفاصيل الجهاز — إذا لم يُتابَع خلال 24 ساعة تواصل مع المسؤول مباشرة — تابع حتى الحل الكامل</td>
+        <td><span class="dept-pill" style="color:#C0392B;background:#FADBD8">🎫 تذكرة في CRM</span></td>
+        <td><div class="note-tpl">🎫 مشكلة هاردوير
+الجهاز: [نوع الجهاز]
+المشكلة: [الوصف]
+رقم التذكرة: #
+تاريخ الرفع: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#7D6608">الإعداد غير مكتمل</span><br><small style="color:#7F8C8D;font-size:.74rem">Setup is Incomplete</small></td>
+        <td>الإعداد ناقص (منتجات / إعدادات / مستخدمين)</td>
+        <td>حدّد ما ينقص بالتحديد — نسّق مع الفريق المعني (بيانات / دعم)</td>
+        <td><span class="dept-pill" style="color:#276843;background:#D5F5E3">🔗 البيانات / الدعم</span></td>
+        <td><div class="note-tpl">الإعداد غير مكتمل
+ما ينقص: [التفاصيل]
+الفريق المعني: [اسم الفريق]
+تاريخ التنسيق: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">في خطر</span><br><small style="color:#7F8C8D;font-size:.74rem">At Risk</small></td>
+        <td>تأخر مفرط / العميل يُبدي تذمراً في هذه المرحلة</td>
+        <td>🔴 تصعيد للـ Team Lead — حدد السبب بدقة</td>
+        <td><span class="dept-pill" style="color:#922B21;background:#FADBD8">🔴 Team Lead</span></td>
+        <td><div class="note-tpl">🔴 تصعيد — مرحلة Business Readiness
+السبب: [السبب]
+الوضع: [ما حدث]
+المطلوب: متابعة عاجلة</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">طلب استرداد</span><br><small style="color:#7F8C8D;font-size:.74rem">Requested Refund</small></td>
+        <td>طلب الاسترداد في مرحلة الجاهزية</td>
+        <td>استمع للسبب — لا تعد بشيء — نسّق مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 الارجاع</span></td>
+        <td><div class="note-tpl">طلب استرداد — مرحلة: Business Readiness
+السبب: [السبب]
+تنسيق مع: فريق الارجاع</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم إنهاء ما قبل التشغيل</span><br><small style="color:#7F8C8D;font-size:.74rem">Pre-Adoption is Done</small></td>
+        <td>اكتملت جميع نقاط الفحص — العميل جاهز بالكامل للانطلاق</td>
+        <td>تأكد من نقاط الفحص الثمانية كلها — انتقل فوراً لمرحلة Adoption</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">الجاهزية مكتملة ✅
+أول بيع حقيقي: [التاريخ]
+جميع نقاط الفحص: مكتملة</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Business Readiness</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s4">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#784212"></span> النشاط غير جاهز <span class="ss-en">— Business is Not Ready</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#7D6608"></span> تأخير من العميل <span class="ss-en">— Delayed by Customer</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#6C3483"></span> ميزة مفقودة <span class="ss-en">— Missing Feature</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> مشكلة تقنية <span class="ss-en">— Technical Issue</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#1A5276"></span> يستخدم نظاماً مختلفاً <span class="ss-en">— Using Different System</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#E67E22"></span> تأخير من ريواباي <span class="ss-en">— Delayed by Rewaapay</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> تأخير بسبب الأجهزة <span class="ss-en">— Delayed by Hardware</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#7D6608"></span> الإعداد غير مكتمل <span class="ss-en">— Setup is Incomplete</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> في خطر <span class="ss-en">— At Risk</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> طلب استرداد <span class="ss-en">— Requested Refund</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم إنهاء ما قبل التشغيل <span class="ss-en">— Pre-Adoption is Done</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">سبب التأخير، رقم الـ Ticket إن رُفع، تاريخ أول بيع حقيقي</td></tr><tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s5" class="stage" style="--sc:#1A5276">
+      <div class="stage-hdr" style="background:#1A5276">
+        <span class="s-icon">📈</span>
+        <div>
+          <div class="s-title">التشغيل — Adoption</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#276843">استخدام جيد</span><span class="sub-badge" style="background:#922B21">استخدام ضعيف</span><span class="sub-badge" style="background:#784212">توقف مؤقت</span><span class="sub-badge" style="background:#1A5276">تعذّر التواصل</span></div>
+        </div>
+        <span class="s-num">٥</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>٧ – ١٢ دقيقة</strong></span>
+      <span class="dur-note">— متابعة الاستخدام الفعلي للمنصة</span>
+    </div>
+      <div class="stage-body">
+            <div class="section-block">
+              <h4 class="sec-title">✅ مؤشرات قياس التشغيل</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الفواتير اليومية > 0 ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> العميل يستخدم المخزون بانتظام ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> لا تذاكر مفتوحة أو مشاكل متكررة ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> العميل أجاب على مكالمتين على الأقل ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> Health Score أخضر أو أصفر ✅</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت مكالمة متابعة التشغيل</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">اتواصلت معك اليوم عشان أطمن عليك وأعرف كيف تسير الأمور مع المنصة.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">هل تستخدمون الكاشير بشكل يومي الحين؟ وكيف تجربتك مع النظام؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM — استخدام جيد</td><td class="ln-cell">ممتاز! هذا هو المطلوب. هل في شيء تحتاج مساعدة فيه أو تحسين؟</td></tr><tr class="csr-row"><td class="sp-cell">CSM — استخدام ضعيف</td><td class="ln-cell">فاهم. وش اللي يوقفك عن الاستخدام؟ في صعوبة في جزء معين؟</td></tr><tr class="csr-row"><td class="sp-cell">CSM — توقف</td><td class="ln-cell">ما في مشكلة، أفهم إن الظروف ممكن تتغير. إيمتى تتوقع تكمل؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">شكراً على ردك، رأيك يهمنا جداً ونعمل دائماً على التحسين. 🤝</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة متابعة — أسبوعان على الانطلاق</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله [اسم العميل]، 👋&#10;معك [اسمك] من فريق نجاح العملاء.&#10;&#10;مرّت أسبوعين على انطلاقتك مع رِواء 🎉&#10;ودّي أطمن عليك وأعرف كيف سير الأمور.&#10;&#10;هل في أي شيء تحتاج مساعدة فيه؟ أو أي سؤال راودك خلال هذه الفترة؟&#10;&#10;فريقنا بخدمتك دائمًا 🤝">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله [اسم العميل]، 👋<br>معك [اسمك] من فريق نجاح العملاء.<br><br>مرّت أسبوعين على انطلاقتك مع رِواء 🎉<br>ودّي أطمن عليك وأعرف كيف سير الأمور.<br><br>هل في أي شيء تحتاج مساعدة فيه؟ أو أي سؤال راودك خلال هذه الفترة؟<br><br>فريقنا بخدمتك دائمًا 🤝</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#1A5276">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#276843">قيد التشغيل</span><br><small style="color:#7F8C8D;font-size:.74rem">Adopting</small></td>
+        <td>العميل يستخدم المنصة بانتظام — Health Score أخضر/أصفر</td>
+        <td>متابعة دورية كل أسبوعين — ابحث عن فرص لزيادة الاستخدام</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">استخدام منتظم ✅
+Health Score: [اللون]
+آخر تواصل: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">في خطر</span><br><small style="color:#7F8C8D;font-size:.74rem">At Risk</small></td>
+        <td>Health Score برتقالي/أحمر — توقف مفاجئ</td>
+        <td>🔴 تصعيد للـ Team Lead فوراً — تواصل يومي — ارفع تذكرة في CRM إذا كان السبب تقنياً</td>
+        <td><span class="dept-pill" style="color:#922B21;background:#FADBD8">🔴 Team Lead</span></td>
+        <td><div class="note-tpl">🔴 تصعيد
+Health Score: [اللون]
+سبب التراجع: [السبب]
+الإجراء المتخذ: [ما قمت به]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#C0392B">طلب استرداد</span><br><small style="color:#7F8C8D;font-size:.74rem">Requested Refund</small></td>
+        <td>طلب الاسترداد بعد الانطلاق الفعلي</td>
+        <td>استمع جيداً — اسأل عن السبب الحقيقي — إذا تقني ارفع تذكرة — نسّق مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 الارجاع</span></td>
+        <td><div class="note-tpl">طلب استرداد — مرحلة: Adoption
+السبب الحقيقي: [السبب]
+تنسيق مع: الارجاع
+تاريخ: [التاريخ]</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Adoption</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s5">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#276843"></span> قيد التشغيل <span class="ss-en">— Adopting</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> في خطر <span class="ss-en">— At Risk</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#C0392B"></span> طلب استرداد <span class="ss-en">— Requested Refund</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">مستوى الاستخدام الفعلي، سبب التراجع إن وجد</td></tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s6" class="stage" style="--sc:#145A32">
+      <div class="stage-hdr" style="background:#145A32">
+        <span class="s-icon">🏆</span>
+        <div>
+          <div class="s-title">النمو — Maturity</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#276843">ناضج ومستقر</span><span class="sub-badge" style="background:#1A5276">يحتاج تطوير</span><span class="sub-badge" style="background:#922B21">خطر للإلغاء</span><span class="sub-badge" style="background:#784212">تعذّر التواصل</span></div>
+        </div>
+        <span class="s-num">٦</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>١٠ – ١٥ دقيقة</strong></span>
+      <span class="dur-note">— استشارة نمو وتطوير</span>
+    </div>
+      <div class="stage-body">
+            <div class="section-block">
+              <h4 class="sec-title">✅ مؤشرات مرحلة النمو</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> مرّ 90+ يوم على التفعيل ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الاستخدام اليومي مستمر ومنتظم ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> Health Score أخضر لأكثر من شهر ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> لا تذاكر مفتوحة أو مشاكل عالقة ✅</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> العميل مستعد للنمو (فتح فرع / ترقية باقة) ✅</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت مكالمة النمو</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حسابك وصل لمرحلة النمو — وهذا يعني إنك تستخدم المنصة بشكل ممتاز! 🏆</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ودّي أفهم: هل فكرت في توسيع نشاطك؟ مثلاً فتح فرع جديد أو ترقية الباقة؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">رائع! عندنا ميزات جديدة قد تفيدك: [اذكر ميزة مناسبة]. هل تحب أعرّفك عليها؟</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">كمان، هل تقدر تشارك تجربتك مع رِواء؟ رأيك يساعد أعمال مثل نشاطك. 😊</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">شكراً جزيلاً على وقتك. أنا دائماً هنا لو احتجت أي شيء. وداعاً 🤝</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة تقدير عملاء النمو</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله [اسم العميل]، 🏆&#10;&#10;وصل حسابك لمرحلة النمو — مبروك على هذا الإنجاز!&#10;استخدامك للمنصة مثال يُحتذى به. 👏&#10;&#10;عشان نواصل نموّك معنا، ودّنا نعرّفك على بعض المزايا الجديدة اللي قد تفيد نشاطك.&#10;&#10;هل يمكنني التواصل معك هذا الأسبوع لمدة 10 دقائق؟">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله [اسم العميل]، 🏆<br><br>وصل حسابك لمرحلة النمو — مبروك على هذا الإنجاز!<br>استخدامك للمنصة مثال يُحتذى به. 👏<br><br>عشان نواصل نموّك معنا، ودّنا نعرّفك على بعض المزايا الجديدة اللي قد تفيد نشاطك.<br><br>هل يمكنني التواصل معك هذا الأسبوع لمدة 10 دقائق؟</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#145A32">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#2874A6">مرحلة التفاوض</span><br><small style="color:#7F8C8D;font-size:.74rem">Negotiation</small></td>
+        <td>العميل في مرحلة التفاوض على التجديد أو الترقية</td>
+        <td>استمع لطلباته — لا تتفاوض بنفسك — نسّق مع المبيعات</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 المبيعات</span></td>
+        <td><div class="note-tpl">قيد التفاوض على التجديد
+طلب العميل: [التفاصيل]
+تنسيق مع: فريق المبيعات
+آخر تواصل: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">تم الإلغاء</span><br><small style="color:#7F8C8D;font-size:.74rem">Churned</small></td>
+        <td>العميل ألغى الاشتراك رسمياً</td>
+        <td>سجّل سبب الإلغاء بالتفصيل — أرسل استبيان الخروج — وثّق كل شيء</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">ألغى الاشتراك
+السبب المفصّل: [السبب]
+تاريخ الإلغاء: [التاريخ]
+استبيان الخروج: أُرسل / لم يرد</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم التجديد</span><br><small style="color:#7F8C8D;font-size:.74rem">Renewed</small></td>
+        <td>العميل جدّد اشتراكه بنجاح</td>
+        <td>مبروك! سجّل التجديد — عُد لمتابعة Adoption — فكّر في فرص الترقية</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">جدّد الاشتراك ✅
+تاريخ التجديد: [التاريخ]
+الباقة: [الباقة]
+فرصة ترقية: نعم / لا</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Due for renewal</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s6">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#2874A6"></span> مرحلة التفاوض <span class="ss-en">— Negotiation</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> تم الإلغاء <span class="ss-en">— Churned</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم التجديد <span class="ss-en">— Renewed</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">هل العميل مهتم بالتوسع؟ ميزة تم اقتراحها؟ احتمالية التجديد</td></tr><tr></tbody></table>
+            </div></div>
+    </section>
+
+    <section id="s7" class="stage" style="--sc:#922B21">
+      <div class="stage-hdr" style="background:#922B21">
+        <span class="s-icon">🔄</span>
+        <div>
+          <div class="s-title">إعادة التفعيل — Reactivation</div>
+          <div class="sub-badges"><span class="sub-badge" style="background:#922B21">غير نشط — للاسترداد</span><span class="sub-badge" style="background:#784212">تواصل تم</span><span class="sub-badge" style="background:#1A5276">تعذّر التواصل</span><span class="sub-badge" style="background:#145A32">مُعاد تفعيله ✅</span></div>
+        </div>
+        <span class="s-num">٧</span>
+      </div>
+      
+    <div class="duration-badge">
+      <span>⏱️</span>
+      <span>مدة المكالمة المقدّرة: <strong>١٠ – ٢٠ دقيقة</strong></span>
+      <span class="dur-note">— استرداد العميل غير النشط</span>
+    </div>
+      <div class="stage-body">
+            <div class="section-block">
+              <h4 class="sec-title">✅ متى تبدأ Reactivation؟</h4>
+              <ul class="check-list"><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> Health Score أحمر أو أسود لأكثر من 14 يوم</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> لا فواتير في الـ 30 يوم الماضية</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> لا رد على آخر 3 محاولات تواصل</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> الاشتراك قرب الانتهاء ولا يوجد تجديد</li><li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> شكوى كبيرة لم تُحل</li></ul>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">💬 سكريبت مكالمة إعادة التفعيل</h4>
+              <table class="script-table">
+                <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">لاحظنا تراجعاً في استخدام المنصة خلال الفترة الأخيرة، وودّنا نفهم وش اللي صاير.</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM — مشكلة تقنية</td><td class="ln-cell">آسفين جداً على هذه التجربة. راح أنسّق مع فريق الدعم الفني الحين عشان يحلّها لك.</td></tr><tr class="csr-row"><td class="sp-cell">CSM — مشكلة في الأسعار</td><td class="ln-cell">نتفهم أهمية هذا الموضوع. تقدر تتواصل مع فريق المبيعات لمراجعة الباقة المناسبة.</td></tr><tr class="csr-row"><td class="sp-cell">CSM — بدّل نظام</td><td class="ln-cell">نحترم قرارك. هل في شيء ممكن نحسّنه عشان نكون خيارك الأول؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">شكراً على صراحتك، رأيك يهمنا جداً عشان نتحسن. 🙏</td></tr></tbody>
+              </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة إعادة التواصل</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله [اسم العميل]، 👋&#10;&#10;لاحظنا غيابك عن المنصة خلال الفترة الأخيرة، وودّنا نعرف كيف نقدر نساعدك بشكل أفضل.&#10;&#10;هل واجهت أي صعوبة أو مشكلة؟ 🤔&#10;رأيك يهمنا جداً عشان نتحسن لك ولغيرك.&#10;&#10;إذا في شيء تحتاج مساعدة فيه، فريقنا بخدمتك:&#10;📱 واتس أب: https://wa.me/9668001244020&#10;📞 الاتصال: 8001244020 (تحويلة 2)&#10;&#10;نأمل نرجع لخدمتك قريباً 🤝">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله [اسم العميل]، 👋<br><br>لاحظنا غيابك عن المنصة خلال الفترة الأخيرة، وودّنا نعرف كيف نقدر نساعدك بشكل أفضل.<br><br>هل واجهت أي صعوبة أو مشكلة؟ 🤔<br>رأيك يهمنا جداً عشان نتحسن لك ولغيرك.<br><br>إذا في شيء تحتاج مساعدة فيه، فريقنا بخدمتك:<br>📱 واتس أب: https://wa.me/9668001244020<br>📞 الاتصال: 8001244020 (تحويلة 2)<br><br>نأمل نرجع لخدمتك قريباً 🤝</div>
+              </div>
+            </div>
+            
+                        
+            <div class="section-block substage-sec" data-substage="guide">
+              <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
+              <div class="substage-legend"><span><span class="ss-badge" style="background:#27AE60">تدفق طبيعي</span></span> <span><span class="ss-badge" style="background:#E67E22">انتبه</span></span> <span><span class="ss-badge" style="background:#C0392B">تصعيد</span></span> <span><span class="dept-pill" style="color:#784212;background:#FDEBD0">🎫 تذكرة CRM</span></span> <span><span class="dept-pill" style="color:#145A32;background:#D5F5E3">🔗 تنسيق مع قسم</span></span></div>
+              <table class="substage-table">
+    <thead style="background:#922B21">
+      <tr>
+        <th style="width:18%">المرحلة الفرعية</th>
+        <th style="width:20%">متى تختارها؟</th>
+        <th style="width:28%">إجراء موظف نجاح العملاء</th>
+        <th style="width:14%">الجهة / التنسيق</th>
+        <th style="width:20%">نموذج النوت في CRM</th>
+      </tr>
+    </thead>
+                <tbody>
+      <tr>
+        <td><span class="ss-badge" style="background:#2874A6">مرحلة التفاوض</span><br><small style="color:#7F8C8D;font-size:.74rem">Negotiation</small></td>
+        <td>العميل غير النشط منفتح على العودة لكن يشترط أو يتفاوض</td>
+        <td>اسمع شروطه — نسّق مع المبيعات فوراً مع تاريخ العميل الكامل</td>
+        <td><span class="dept-pill" style="color:#1A5276;background:#D6EAF8">🔗 المبيعات</span></td>
+        <td><div class="note-tpl">قيد التفاوض — Reactivation
+شرط العميل: [التفاصيل]
+تنسيق مع: المبيعات
+آخر تواصل: [التاريخ]</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#922B21">تم الإلغاء</span><br><small style="color:#7F8C8D;font-size:.74rem">Churned</small></td>
+        <td>أكّد الإلغاء النهائي بعد محاولات الاسترداد</td>
+        <td>سجّل سبب الإلغاء كاملاً — وثّق كل تفاصيل الرحلة — أرسل استبيان الخروج</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">ألغى نهائياً
+سبب الإلغاء: [السبب المفصّل]
+تاريخ الإلغاء: [التاريخ]
+استبيان الخروج: أُرسل</div></td>
+      </tr>
+      <tr>
+        <td><span class="ss-badge" style="background:#145A32">تم التجديد</span><br><small style="color:#7F8C8D;font-size:.74rem">Renewed</small></td>
+        <td>العميل غير النشط عاد وجدّد اشتراكه</td>
+        <td>مبروك! سجّل قصة الاسترداد — ابدأ دورة Adoption جديدة — تابع أكثر من المعتاد</td>
+        <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
+        <td><div class="note-tpl">عاد وجدّد ✅ — Reactivation ناجح
+تاريخ العودة: [التاريخ]
+سبب العودة: [ما أقنعه]
+متابعة مكثفة: مطلوبة</div></td>
+      </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-block crm-sec">
+              <h4 class="sec-title">🗃️ ما يحدّثه الموظف في CRM</h4>
+              <table class="crm-table"><tbody><tr><td class="crm-k">Main Stage</td><td class="crm-v">Due for renewal</td></tr><tr><td class="crm-k">Sub Stage</td><td class="crm-v">
+                <div class="ss-picker" id="picker-s7">
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#2874A6"></span> مرحلة التفاوض <span class="ss-en">— Negotiation</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#922B21"></span> تم الإلغاء <span class="ss-en">— Churned</span></div>
+                  <div class="ss-pick-item" onclick="pickSs(this)"><span class="ss-dot" style="background:#145A32"></span> تم التجديد <span class="ss-en">— Renewed</span></div>
+                </div>
+              </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">سبب التوقف، نتيجة المكالمة، ما قاله العميل، قرار الإلغاء أو الاسترداد</td></tr><tr></tbody></table>
+            </div></div>
+    </section>
+
+  
+    <section id="health-section" class="stage" style="--sc:#1A3A2A">
+      <div class="stage-hdr" style="background:#1A3A2A">
+        <span class="s-icon">❤️</span>
+        <div><div class="s-title">Health Score — دليل التقييم</div></div>
+      </div>
+      <div class="stage-body">
+
+        <div class="info-box" style="background:#FFF9E6;border-right:4px solid #F39C12">
+          <div class="ib-title">📊  Health Score؟</div>
+          <p>يُحسَب تلقائياً من <strong>Metabase</strong> بناءً على تاريخ آخر فاتورة صدرت — الموظف يتابع اللون ويتصرف وفقه. </p>
+        </div>
+
+        <h4 class="sec-title" style="margin-top:16px">⚠️ العملاء الذين لم يبدأوا — بغض النظر عن القطاع</h4>
+        <table class="health-tbl" style="margin-bottom:18px">
+          <thead><tr><th>اللون</th><th>المدة</th><th>الوضع والإجراء</th></tr></thead>
+          <tbody><tr><td>⚫ Grey</td><td>أقل من 90 يوم</td><td>عميل جديد لم يُصدر أي فاتورة بعد — أولوية تفعيل</td></tr><tr><td>⬛ Black</td><td>أكثر من 90 يوم</td><td>عميل قديم لم يُصدر أي فاتورة — Reactivation فوري + تصعيد للTeam Leadـ </td></tr></tbody>
+        </table>
+
+        <h4 class="sec-title">📐 المعايير حسب القطاع (بناءً على آخر فاتورة)</h4>
+        <div class="sector-tabs">
+          <button class="stab active" onclick="showSector(this,'fb')">🍕 F&B</button>
+          <button class="stab" onclick="showSector(this,'retail')">🛒 Retail</button>
+          <button class="stab" onclick="showSector(this,'svc')">🏖 Service</button>
+        </div>
+        <div id="hs-fb" class="hs-tab"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 15 يوم</td><td>آخر فاتورة 8–15 يوم</td></tr><tr><td>🟠 Orange</td><td>16 – 30 يوم</td><td>آخر فاتورة 16–30 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 30 يوم</td><td>آخر فاتورة > 30 يوم</td></tr></tbody></table></div>
+        <div id="hs-retail" class="hs-tab" style="display:none"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 30 يوم</td><td>آخر فاتورة 8–30 يوم</td></tr><tr><td>🟠 Orange</td><td>31 – 60 يوم</td><td>آخر فاتورة 31–60 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 60 يوم</td><td>آخر فاتورة > 60 يوم</td></tr></tbody></table></div>
+        <div id="hs-svc" class="hs-tab" style="display:none"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 45 يوم</td><td>آخر فاتورة 8–45 يوم</td></tr><tr><td>🟠 Orange</td><td>46 – 90 يوم</td><td>آخر فاتورة 46–90 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 90 يوم</td><td>آخر فاتورة > 90 يوم</td></tr></tbody></table></div>
+
+        <h4 class="sec-title" style="margin-top:18px">🎯 الإجراء المطلوب من الموظف لكل لون</h4>
+        <table class="health-tbl">
+          <thead><tr><th>اللون</th><th>الإجراء المطلوب</th></tr></thead>
+          <tbody><tr><td>🟢 Green</td><td>متابعة دورية — ادفع نحو النمو وزيادة الاستخدام</td></tr><tr><td>🟡 Yellow</td><td>تواصل خلال 48 ساعة + اعرف السبب + سجّل في CRM</td></tr><tr><td>🟠 Orange</td><td>تواصل فوري + تصعيد للـ Team Lead + نوت واضحة </td></tr><tr><td>🔴 Red</td><td>Reactivation Plan فوري + تصعيد</td></tr><tr><td>⚫ Grey</td><td>متابعة Inventory + Training + دفع للتفعيل</td></tr><tr><td>⬛ Black</td><td>Reactivation فوري + تصعيد — لا يُترك بدون إجراء</td></tr></tbody>
+        </table>
+
+      </div>
+    </section>
+
+  <footer class="doc-footer" dir="rtl">
+    <div class="footer-icon">🎓</div>
+    <div class="footer-title">أكاديمية نجاح العملاء — Rewaa</div>
+    <div class="footer-meta">المرجع التشغيلي الكامل &nbsp;|&nbsp; إعداد: قسم الجودة &nbsp;|&nbsp; Q2 2026 &nbsp;|&nbsp; الإصدار 1.0</div>
+    <div class="footer-note">لأي تعديل أو إضافة — تواصل مع قسم الجودة. هذا المرجع يُحدَّث بشكل دوري.</div>
+  </footer>
+
+</div>
+<script>
+
+  function pickSs(el) {
+    var siblings = el.parentNode.querySelectorAll('.ss-pick-item');
+    var wasSelected = el.classList.contains('selected');
+    siblings.forEach(function(s) { s.classList.remove('selected'); });
+    if (!wasSelected) el.classList.add('selected');
+  }
+
+  function copyTpl(btn) {
+    const text = btn.getAttribute('data-text').replace(/&#10;/g, '\n');
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✅ تم النسخ!';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = '📋 انسخ الرسالة'; btn.classList.remove('ok'); }, 2000);
+    });
+  }
+  function toggleCheck(el) {
+    el.textContent = el.textContent === '☐' ? '☑' : '☐';
+    el.style.color = el.textContent === '☑' ? '#27AE60' : '';
+  }
+  // Active nav highlight
+  const secs = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    document.querySelectorAll('.nl').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+
+  function showSector(btn, id) {
+    document.querySelectorAll('.hs-tab').forEach(function(t) { t.style.display = 'none'; });
+    document.getElementById('hs-' + id).style.display = '';
+    document.querySelectorAll('.stab').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
