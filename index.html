@@ -137,7 +137,14 @@
   .dept-pill { display: inline-block; padding: 2px 9px; border-radius: 5px; font-size: .77rem; font-weight: 600; white-space: nowrap; }
   .note-tpl { background: #FFFEF0; border-right: 3px solid #F0B429; padding: 6px 9px; border-radius: 4px; font-size: .80rem; white-space: pre-line; line-height: 1.7; color: #5D4E1A; }
   .substage-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; font-size: .78rem; align-items: center; }
-
+/*Phone Book */
+    .phone-link {
+  color: var(--teal, #00A4A6);
+  text-decoration: underline;
+}
+.phone-link:hover {
+  color: var(--purple, #653165);
+}
 </style>
 </head>
 <body>
@@ -163,13 +170,15 @@
 
   
 <div id="phone-tip" class="phone-tip" dir="rtl">
-  <h3>📞 المقسّم و 3CX — متى تستخدم كل منهما؟</h3>
+  <h3>📞  مقسّم و 3 CX — متى تستخدم كل منهما؟</h3>
   <p>
-    <strong>القاعدة:</strong> ابدأ دائماً بالاتصال من <strong>المقسّم</strong>
-إذا لم يرد العميل في أول محاولتين، جرّب من <strong>3CX</strong><br>
-إذا لم يرد على 3CX، أرسل له رسالة على <strong>Intercom</strong>  </p>
+    <strong>القاعدة:</strong> ابدأ دائماً بالاتصال من
+    <a href="https://portal.mq.maqsam.com/calls" target="_blank" rel="noopener" class="phone-link"><strong>المقسّم</strong></a><br>
+    إذا لم يرد العميل في أول محاولتين، جرّب من
+    <a href="https://rewaa-tech.3cx.ae/#/switchboard" target="_blank" rel="noopener" class="phone-link"><strong>3CX</strong></a><br>
+    إذا لم يرد على 3CX، أرسل له رسالة على <strong>Intercom</strong>
+  </p>
 </div>
-
   
     <section id="s1" class="stage" style="--sc:#1A3A2A">
       <div class="stage-hdr" style="background:#1A3A2A">
