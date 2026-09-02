@@ -12,29 +12,24 @@
     --muted: #7F8C8D; --sbw: 230px; --r: 12px;
   }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); direction: rtl; display: flex; min-height: 100vh; }
-
   /* ── SIDEBAR ── */
   #sb { width: var(--sbw); min-height: 100vh; background: var(--primary); position: fixed; right: 0; top: 0; overflow-y: auto; padding-bottom: 24px; z-index: 100; }
   .sb-logo { background: rgba(0,0,0,.3); color: #fff; padding: 20px 16px; font-size: 1rem; font-weight: 700; line-height: 1.5; text-align: center; border-bottom: 2px solid var(--accent); }
   .sb-logo small { font-size: .78rem; color: #a8d5b5; }
   .nl { display: flex; align-items: center; gap: 9px; padding: 10px 14px; color: #c8e6d0; text-decoration: none; font-size: .84rem; border-right: 3px solid transparent; transition: all .2s; }
   .nl:hover, .nl.active { background: rgba(255,255,255,.1); color: #fff; border-right-color: var(--accent); }
-
   /* ── MAIN ── */
   #main { margin-right: var(--sbw); padding: 22px 26px; flex: 1; }
-
   /* ── HERO ── */
   .hero {background: linear-gradient(135deg,#653165,#00A4A6); border-radius: var(--r); padding: 36px; color: #fff; margin-bottom: 22px; position: relative; overflow: hidden; }
   .hero h1 { font-size: 1.8rem; margin-bottom: 6px; }
   .hero p { color: #a8d5b5; font-size: .95rem; }
   .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .hero-tag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); border-radius: 20px; padding: 3px 12px; font-size: .78rem; color: #e0f0e8; }
-
   /* ── PHONE TIP ── */
   .phone-tip { background: #fff; border-radius: var(--r); padding: 18px 22px; margin-bottom: 22px; border-right: 5px solid #F39C12; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
   .phone-tip h3 { color: #784212; margin-bottom: 10px; font-size: 1rem; }
   .phone-tip p { font-size: .9rem; line-height: 1.8; }
-
   /* ── STAGE ── */
   .stage { background: var(--card); border-radius: var(--r); margin-bottom: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.07); overflow: hidden; border-top: 4px solid var(--sc); }
   .stage-hdr { display: flex; align-items: center; gap: 14px; padding: 18px 22px; color: #fff; }
@@ -43,27 +38,22 @@
   .s-num { margin-right: auto; font-size: 2.8rem; font-weight: 900; opacity: .2; }
   .sub-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
   .sub-badge { color: #fff; font-size: .72rem; padding: 2px 9px; border-radius: 10px; }
-
   /* ── DURATION ── */
   .duration-badge { display: flex; align-items: center; gap: 8px; padding: 9px 22px; background: #1A5276; color: #fff; font-size: .84rem; }
   .dur-note { color: #85C1E9; font-size: .78rem; }
-
   /* ── STAGE BODY ── */
   .stage-body { padding: 18px 22px; }
   .section-block { margin-bottom: 18px; padding: 16px; background: #F8FAFB; border-radius: 9px; }
   .sec-title { font-size: .92rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid #ECF0F1; }
-
   /* INFO BOX */
   .info-box { border-radius: 9px; padding: 14px 16px; margin-bottom: 18px; font-size: .88rem; line-height: 1.8; }
   .ib-title { font-weight: 700; margin-bottom: 6px; font-size: .94rem; }
   .ib-bullet { padding-right: 8px; }
-
   /* CHECKLIST */
   .check-list { list-style: none; padding: 0; }
   .check-item { padding: 6px 0; font-size: .86rem; border-bottom: 1px solid #ECF0F1; display: flex; align-items: flex-start; gap: 7px; }
   .check-item:last-child { border-bottom: none; }
   .cb { cursor: pointer; font-size: .95rem; color: var(--muted); user-select: none; }
-
   /* SCRIPT */
   .script-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
   .script-table thead th { background: var(--primary); color: #fff; padding: 7px 11px; font-weight: 600; text-align: right; }
@@ -71,14 +61,12 @@
   .cust-row { background: #FDFEFE; }
   .sp-cell { padding: 8px 11px; font-weight: 700; font-size: .8rem; white-space: nowrap; min-width: 90px; border-bottom: 1px solid #E8EEF2; }
   .ln-cell { padding: 8px 11px; line-height: 1.6; border-bottom: 1px solid #E8EEF2; }
-
   /* TEMPLATE */
   .tpl-box { position: relative; background: #FFFEF0; border: 1px dashed #F0B429; border-radius: 8px; padding: 14px; }
   .copy-btn { position: absolute; top: 8px; left: 8px; background: #F0B429; border: none; border-radius: 6px; padding: 4px 10px; font-size: .75rem; cursor: pointer; font-family: inherit; }
   .copy-btn:hover { background: #D4A017; color: #fff; }
   .copy-btn.ok { background: #27AE60; color: #fff; }
   .tpl-body { font-size: .86rem; line-height: 1.9; margin-top: 26px; }
-
   /* GUIDE TABLE */
   .guide-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
   .guide-table thead th { background: var(--primary); color: #fff; padding: 7px 11px; text-align: right; }
@@ -86,22 +74,17 @@
   .guide-table tbody tr:nth-child(even) { background: #F0F8FF; }
   .tg-type { font-weight: 600; }
   .tg-ex { color: var(--muted); font-size: .8rem; }
-
   /* CRM */
   .crm-sec { background: #F0FFF4; }
   .crm-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
   .crm-k { padding: 7px 11px; font-weight: 600; color: #145A32; background: #D5F5E3; border-bottom: 1px solid #A9DFBF; width: 34%; }
   .crm-v { padding: 7px 11px; border-bottom: 1px solid #A9DFBF; }
-
   /* HEALTH */
   .health-tbl { width: 100%; border-collapse: collapse; font-size: .86rem; }
   .health-tbl thead th { background: #1A3A2A; color: #fff; padding: 9px 13px; text-align: right; }
   .health-tbl tbody td { padding: 8px 13px; border-bottom: 1px solid #ECF0F1; vertical-align: top; }
   .health-tbl tbody tr:nth-child(even) { background: #F8FAFB; }
-
   @media (max-width:768px) { #sb { display: none; } #main { margin-right: 0; padding: 12px; } }
-
-
   /* SECTOR TABS */
   .sector-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
   .stab { padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px; background: #f8f8f8; cursor: pointer; font-family: inherit; font-size: .83rem; }
@@ -113,9 +96,6 @@
   .footer-meta { font-size: .82rem; color: var(--muted); margin-bottom: 6px; }
   .footer-note { font-size: .78rem; color: #AAB7B8; font-style: italic; }
   @media print { #sb { display: none; } #main { margin-right: 0; } }
-
-
-
   /* ── SS PICKER ── */
   .ss-picker { display: flex; flex-direction: column; gap: 4px; }
   .ss-pick-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 7px; cursor: pointer; font-size: .85rem; color: var(--text); border: 1px solid transparent; transition: all .15s; user-select: none; }
@@ -125,7 +105,6 @@
   .ss-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .ss-en { color: var(--muted); font-size: .78rem; }
   .ss-pick-item.selected .ss-dot { box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
-
   /* ── SUB-STAGE GUIDE ── */
   .substage-sec { background: #F0F4F8; border: 1px solid #D6E4F0; }
   .substage-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
@@ -148,7 +127,6 @@
 </style>
 </head>
 <body>
-
     <nav id="sb" dir="rtl">
       <div class="sb-logo">🏢 أكاديمية CSM<br><small>رِواء</small></div>
       <a href="#phone-tip" class="nl"><span>📞</span><span>3CX والمقسم</span></a>
@@ -160,14 +138,12 @@
 <a href="#health-section" class="nl"><span>❤️</span><span>Health Score</span></a>
     </nav>
 <div id="main">
-
   <div class="hero">
     <h1>🏢 أكاديمية نجاح العملاء — رِواء</h1>
     <p>المرجعية الكاملة لموظف CSM — كل مرحلة، كل سكريبت، كل سجل</p>
     <div style="margin-top:10px"><span style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:3px 14px;font-size:.78rem;color:#e0f0e8">الإصدار الثالث — سبتمبر ٢٠٢٦</span></div>
     <div class="hero-tags"><span class="hero-tag">5 مراحل</span><span class="hero-tag">سكريبتات جاهزة</span><span class="hero-tag">قوالب Open CX </span><span class="hero-tag">دليل المنتجات</span><span class="hero-tag">Health Score</span></div>
   </div>
-
   
 <div id="phone-tip" class="phone-tip" dir="rtl">
   <h3>📞  مقسّم و 3 CX — متى تستخدم كل منهما؟</h3>
@@ -205,14 +181,29 @@
               <h4 class="sec-title">💬 سكريبت المكالمة الأولى</h4>
               <table class="script-table">
                 <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
-                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل] 👋، معك [اسمك] من فريق نجاح العملاء في رِواء.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">يسعدنا انضمامك لعائلة رِواء! 🎉 أنا المسؤول عنك طوال رحلتك معنا، وراح أكون مرجعك الأساسي وأنسّق معك مع باقي الفرق.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">عشان ننطلق بشكل صحيح، ودّي أفهم طبيعة نشاطك — كم فرع عندك؟ وما القطاع: تجزئة، مطاعم، خدمات؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز! وهل تستخدمون أي نظام حالياً؟ وعندكم بيانات مخزون موجودة؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">تمام. خطواتنا القادمة ثلاث: أولاً نجهّز ملف المنتجات، ثاني جلسة تدريب مع فريق التدريب، وثالث نتأكد من جاهزيتك للبدء. أنا بنسّق معك كل خطوة.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">راح أرسل لك رسالة على الواتس فيها ملخص المراحل. هل رقم [X] صحيح للتواصل؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">نعم / لا</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز، بانتظار ردك وأنا بخدمتك في أي وقت. وداعاً 🤝</td></tr></tbody>
+                <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل] 👋، معك [اسمك] من فريق نجاح العملاء في رِواء.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">يسعدنا انضمامك لعائلة رِواء! 🎉 أنا المسؤول عنك طوال رحلتك معنا، وراح أكون مرجعك الأساسي وأنسّق معك مع باقي الفرق.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">عشان ننطلق بشكل صحيح، ودّي أفهم طبيعة نشاطك — كم فرع عندك؟ وما القطاع: تجزئة، مطاعم، خدمات؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز! وهل تستخدمون أي نظام حالياً؟ وعندكم بيانات مخزون موجودة؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">تمام. خطواتنا القادمة ثلاث: أولاً نجهّز ملف المنتجات، ثاني جلسة تدريب مع فريق التدريب، وثالث نتأكد من جاهزيتك للبدء. أنا بنسّق معك كل خطوة.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">كمان حاب أنبّهك على نقطتين مهمتين: أول شي، بنحتاج منك تحمّل تطبيق "مساعد" على جوالك — راح أرسل لك رابط التحميل. ثاني شي، بيوصلك رابط على الواتساب لجدولة التدريب ورفع المنتجات.</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">مهم جداً: لما توصلك رسالتنا على الواتساب، تأكد إنك تضغط "السماح" (Allow) — عشان نقدر نكمل نرسل لك باقي التفاصيل والمتابعات أول بأول. 🙏</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">راح أرسل لك رسالة على الواتس فيها ملخص المراحل. هل رقم [X] صحيح للتواصل؟</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">نعم / لا</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">ممتاز، بانتظار ردك وأنا بخدمتك في أي وقت. وداعاً 🤝</td></tr></tbody>
               </table>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✅ إلزامي إبلاغ العميل بها أثناء مكالمة الاستلام</h4>
+              <ul class="check-list">
+                <li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> إبلاغ العميل بتحميل تطبيق "مساعد" (Rewaa Pulse) — <a href="https://play.google.com/store/apps/details?id=com.rewaa.pulse&hl=ar&pli=1" target="_blank" rel="noopener" class="phone-link">رابط التحميل</a></li>
+                <li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> إبلاغ العميل إنه بيوصله رابط على الواتساب لجدولة التدريب ورفع المنتجات</li>
+                <li class="check-item"><span class="cb" onclick="toggleCheck(this)">☐</span> التأكيد على العميل إنه يضغط "السماح" (Allow) لما توصله رسالة الواتساب — عشان نقدر نرسل له باقي المعلومات والمتابعات</li>
+              </ul>
             </div>
             <div class="section-block">
               <h4 class="sec-title">✉️ رسالة البدء — جمع معلومات العميل</h4>
               <div class="tpl-box">
                 <button class="copy-btn" onclick="copyTpl(this)" data-text="شكرًا لاشتراكك في رواء 🙏&#10;نحن هنا لمساعدتك في إعداد حسابك والبدء بأسرع وقت 🚀&#10;&#10;لإكمال الإعداد، نحتاج منك تجاوب على الأسئلة التالية:&#10;&#10;1️⃣ حالة النشاط:&#10;1- قائم&#10;2- تحت التجهيز&#10;&#10;2️⃣ هل المنتجات جاهزة؟&#10;1- جاهزة&#10;2- غير جاهزة&#10;&#10;3️⃣ هل تحتاج تدريب؟&#10;1- نعم&#10;2- لا&#10;&#10;4️⃣ هل هذا الرقم مناسب للتواصل؟&#10;1- نعم&#10;2- لا (يرجى تزويدنا بالرقم الصحيح)">📋 انسخ الرسالة</button>
                 <div class="tpl-body">شكرًا لاشتراكك في رواء 🙏<br>نحن هنا لمساعدتك في إعداد حسابك والبدء بأسرع وقت 🚀<br><br>لإكمال الإعداد، نحتاج منك تجاوب على الأسئلة التالية:<br><br>1️⃣ حالة النشاط:<br>1- قائم<br>2- تحت التجهيز<br><br>2️⃣ هل المنتجات جاهزة؟<br>1- جاهزة<br>2- غير جاهزة<br><br>3️⃣ هل تحتاج تدريب؟<br>1- نعم<br>2- لا<br><br>4️⃣ هل هذا الرقم مناسب للتواصل؟<br>1- نعم<br>2- لا (يرجى تزويدنا بالرقم الصحيح)</div>
+              </div>
+            </div>
+            <div class="section-block">
+              <h4 class="sec-title">✉️ رسالة تحميل تطبيق مساعد + رابط التدريب</h4>
+              <div class="tpl-box">
+                <button class="copy-btn" onclick="copyTpl(this)" data-text="حياك الله [اسم العميل] 👋&#10;عشان نكمل خطوات إعداد حسابك في رِواء:&#10;&#10;1️⃣ حمّل تطبيق &quot;مساعد&quot; من الرابط:&#10;https://play.google.com/store/apps/details?id=com.rewaa.pulse&hl=ar&pli=1&#10;&#10;2️⃣ راح يوصلك رابط لجدولة جلسة التدريب ورفع المنتجات:&#10;https://www.onboarding.rewaa.com/u/yv0T5IBD6YZiK1fdaI4sig&#10;&#10;⚠️ مهم جداً: لما توصلك رسالتنا، لا تنسَ تضغط &quot;السماح&quot; (Allow) — عشان نقدر نرسل لك باقي التفاصيل والمتابعات أول بأول.&#10;&#10;نحن بخدمتك دائماً 🤝">📋 انسخ الرسالة</button>
+                <div class="tpl-body">حياك الله [اسم العميل] 👋<br>عشان نكمل خطوات إعداد حسابك في رِواء:<br><br>1️⃣ حمّل تطبيق "مساعد" من الرابط:<br><a href="https://play.google.com/store/apps/details?id=com.rewaa.pulse&hl=ar&pli=1" target="_blank" rel="noopener" class="phone-link">رابط التحميل</a><br><br>2️⃣ راح يوصلك رابط لجدولة جلسة التدريب ورفع المنتجات:<br><a href="https://www.onboarding.rewaa.com/u/yv0T5IBD6YZiK1fdaI4sig" target="_blank" rel="noopener" class="phone-link">رابط التدريب ورفع المنتجات</a><br><br>⚠️ مهم جداً: لما توصلك رسالتنا، لا تنسَ تضغط "السماح" (Allow) — عشان نقدر نرسل لك باقي التفاصيل والمتابعات أول بأول.<br><br>نحن بخدمتك دائماً 🤝</div>
               </div>
             </div>
             <div class="section-block">
@@ -313,7 +304,6 @@
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">سجّل ملخص المكالمة الأولى: القطاع، عدد الفروع، هل لديه مخزون جاهز</td></tr></tbody></table>
             </div></div>
     </section>
-
     <section id="s2" class="stage" style="--sc:#1A5276">
       <div class="stage-hdr" style="background:#1A5276">
         <span class="s-icon">📦</span>
@@ -488,7 +478,6 @@
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">نوع القالب المُرسَل، حالة الملف، أي تنبيه على البيانات (باركود، ضريبة، فروع)</td></tr></tbody></table>
             </div></div>
     </section>
-
     <section id="s3" class="stage" style="--sc:#4A235A">
       <div class="stage-hdr" style="background:#4A235A">
         <span class="s-icon">🎓</span>
@@ -535,7 +524,6 @@
               <table class="script-table">
                 <thead><tr><th>المتحدث</th><th>نص الحوار</th></tr></thead>
                 <tbody><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">حياك الله [اسم العميل]، معك [اسمك] من فريق نجاح العملاء في رِواء. 👋</td></tr><tr class="csr-row"><td class="sp-cell">CSM</td><td class="ln-cell">اتواصلت معك عشان أذكّرك بجلسة التدريب — رسلنا لك رابط الحجز ولحد الآن ما اتحجزت الجلسة.</td></tr><tr class="cust-row"><td class="sp-cell">عميل</td><td class="ln-cell">(يجاوب)</td></tr><tr class="csr-row"><td class="sp-cell">CSM — لم يرَ الرسالة</td><td class="ln-cell">ما في مشكلة، راح أعيد إرساله الحين. الجلسة بتفرق كثير في فهم المنصة. 🎯</td></tr><tr class="csr-row"><td class="sp-cell">CSM — أجّل</td><td class="ln-cell"> ما في مشكلة! المواعيد تتجدد أسبوعياً — راح أعيد لك رابط الحجز وتختار الوقت اللي يناسبك حسب قطاعك. 🗓️
-
 </td></tr><tr class="csr-row"><td class="sp-cell">CSM — حجز</td><td class="ln-cell">ممتاز! فريق التدريب راح يكون معك. أي شيء تحتاجه بعدين، أنا هنا. 🤝</td></tr></tbody>
               </table>
             </div>
@@ -640,7 +628,6 @@
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">هل أرسل الرابط؟ هل حجز العميل؟ هل حضر؟ نوع الجلسة (ويبنار / 1on1)</td></tr></tbody></table>
             </div></div>
     </section>
-
     <section id="s4" class="stage" style="--sc:#784212">
       <div class="stage-hdr" style="background:#784212">
         <span class="s-icon">🏪</span>
@@ -825,8 +812,6 @@ https://s.rewaa.com/3o4p</div></td>
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">سبب التأخير، رقم الـ Ticket إن رُفع، تاريخ أول بيع حقيقي</td></tr><tr></tbody></table>
             </div></div>
     </section>
-
-
     <section id="s_l1" class="stage" style="--sc:#1A6B5E">
       <div class="stage-hdr" style="background:#1A6B5E">
         <span class="s-icon">🚀</span>
@@ -841,13 +826,11 @@ https://s.rewaa.com/3o4p</div></td>
         </div>
         <span class="s-num">L1</span>
       </div>
-
       <div class="duration-badge" style="background:#1A3A2A">
         <span>⚙️</span>
         <span>الانتقال للمرحلة التالية: <strong>تلقائي من النظام</strong></span>
         <span class="dur-note">— بناءً على عدد الـ modules المستخدمة فعلياً</span>
       </div>
-
       <div class="stage-body">
         <div class="info-box" style="background:#E8F8F5;border-right:4px solid #1A6B5E">
           <div class="ib-title">📌 فكرة Level 1 — بداية التفعيل</div>
@@ -855,7 +838,6 @@ https://s.rewaa.com/3o4p</div></td>
           <p class="ib-bullet">• الانتقال تلقائي — بمجرد رصد النظام للاستخدام المطلوب</p>
           <p class="ib-bullet">• لا توجد trigger يدوية — لا تضع "Level 1 is Done" يدوياً</p>
         </div>
-
         <div class="section-block substage-sec" data-substage="guide">
           <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
           <div class="substage-legend">
@@ -986,7 +968,6 @@ https://s.rewaa.com/3o4p</div></td>
             </tbody>
           </table>
         </div>
-
         <div class="section-block crm-sec">
           <h4 class="sec-title">🗃️   ما يحدّثه الموظف في حساب العميل  | Sub Stage & Note</h4>
           <table class="crm-table">
@@ -1013,7 +994,6 @@ https://s.rewaa.com/3o4p</div></td>
         </div>
       </div>
     </section>
-
     <section id="s_l2" class="stage" style="--sc:#1A578A">
       <div class="stage-hdr" style="background:#1A578A">
         <span class="s-icon">⚡</span>
@@ -1028,13 +1008,11 @@ https://s.rewaa.com/3o4p</div></td>
         </div>
         <span class="s-num">L2</span>
       </div>
-
       <div class="duration-badge" style="background:#1A3A2A">
         <span>⚙️</span>
         <span>الانتقال للمرحلة التالية: <strong>تلقائي من النظام</strong></span>
         <span class="dur-note">— بناءً على عدد الـ modules المستخدمة فعلياً</span>
       </div>
-
       <div class="stage-body">
         <div class="info-box" style="background:#E8F8F5;border-right:4px solid #1A578A">
           <div class="ib-title">📌 فكرة Level 2 — الاستخدام اليومي</div>
@@ -1042,7 +1020,6 @@ https://s.rewaa.com/3o4p</div></td>
           <p class="ib-bullet">• الانتقال تلقائي — بمجرد رصد النظام للاستخدام المطلوب</p>
           <p class="ib-bullet">• لا توجد trigger يدوية — لا تضع "Level 2 is Done" يدوياً</p>
         </div>
-
         <div class="section-block substage-sec" data-substage="guide">
           <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
           <div class="substage-legend">
@@ -1181,7 +1158,6 @@ https://s.rewaa.com/3o4p</div></td>
             </tbody>
           </table>
         </div>
-
         <div class="section-block crm-sec">
           <h4 class="sec-title">🗃️  ما يحدّثه الموظف في حساب العميل | Sub Stage & Note </h4>
           <table class="crm-table">
@@ -1210,7 +1186,6 @@ https://s.rewaa.com/3o4p</div></td>
         </div>
       </div>
     </section>
-
     <section id="s_l3" class="stage" style="--sc:#5E2D80">
       <div class="stage-hdr" style="background:#5E2D80">
         <span class="s-icon">🌟</span>
@@ -1225,13 +1200,11 @@ https://s.rewaa.com/3o4p</div></td>
         </div>
         <span class="s-num">L3</span>
       </div>
-
       <div class="duration-badge" style="background:#1A3A2A">
         <span>⚙️</span>
         <span>الانتقال للمرحلة التالية: <strong>تلقائي من النظام</strong></span>
         <span class="dur-note">— بناءً على عدد الـ modules المستخدمة فعلياً</span>
       </div>
-
       <div class="stage-body">
         <div class="info-box" style="background:#E8F8F5;border-right:4px solid #5E2D80">
           <div class="ib-title">📌 فكرة Level 3 — تفعيل الميزات</div>
@@ -1239,7 +1212,6 @@ https://s.rewaa.com/3o4p</div></td>
           <p class="ib-bullet">• الانتقال تلقائي — بمجرد رصد النظام للاستخدام المطلوب</p>
           <p class="ib-bullet">• لا توجد trigger يدوية — لا تضع "Level 3 is Done" يدوياً</p>
         </div>
-
         <div class="section-block substage-sec" data-substage="guide">
           <h4 class="sec-title">📋 دليل المراحل الفرعية — متى تختارها وماذا تفعل</h4>
           <div class="substage-legend">
@@ -1378,7 +1350,6 @@ https://s.rewaa.com/3o4p</div></td>
             </tbody>
           </table>
         </div>
-
         <div class="section-block crm-sec">
           <h4 class="sec-title">🗃️  ما يحدّثه الموظف في حساب العميل | Sub Stage & Note</h4>
           <table class="crm-table">
@@ -1604,7 +1575,6 @@ Maturity الحالي: [رقم]
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">مستوى الـ maturity الحالي، سبب التأخير أو التراجع إن وجد، الإجراء المتخذ</td></tr></tbody></table>
             </div></div>
     </section>
-
     <section id="s6" class="stage" style="--sc:#145A32">
       <div class="stage-hdr" style="background:#145A32">
         <span class="s-icon">🏆</span>
@@ -1690,7 +1660,6 @@ Maturity الحالي: [رقم]
         <td><span class="dept-pill" style="color:#666;background:#F0F0F0">—</span></td>
         <td><div class="note-tpl">ألغى الاشتراك
 السبب المفصّل: [السبب]
-
 </div></td>
       </tr>
       <tr>
@@ -1719,11 +1688,7 @@ Maturity الحالي: [رقم]
               </td></tr><tr><td class="crm-k">Note</td><td class="crm-v">هل العميل مهتم بالتوسع؟ ميزة تم اقتراحها؟ احتمالية التجديد</td></tr><tr></tbody></table>
             </div></div>
     </section>
-
     <!-- s7 (Reactivation) removed — content now covered by s6 (Renewal) + Maturity Reactivation sub-stage -->
-
-
-
   
     <section id="health-section" class="stage" style="--sc:#1A3A2A">
       <div class="stage-hdr" style="background:#1A3A2A">
@@ -1731,18 +1696,15 @@ Maturity الحالي: [رقم]
         <div><div class="s-title">Health Score — دليل التقييم</div></div>
       </div>
       <div class="stage-body">
-
         <div class="info-box" style="background:#FFF9E6;border-right:4px solid #F39C12">
           <div class="ib-title">📊  Health Score؟</div>
           <p>يُحسَب تلقائياً من <strong>Metabase</strong> بناءً على تاريخ آخر فاتورة صدرت — الموظف يتابع اللون ويتصرف وفقه. </p>
         </div>
-
         <h4 class="sec-title" style="margin-top:16px">⚠️ العملاء الذين لم يبدأوا — بغض النظر عن القطاع</h4>
         <table class="health-tbl" style="margin-bottom:18px">
           <thead><tr><th>اللون</th><th>المدة</th><th>الوضع والإجراء</th></tr></thead>
           <tbody><tr><td>⚫ Grey</td><td>أقل من 90 يوم</td><td>عميل جديد لم يُصدر أي فاتورة بعد — أولوية تفعيل</td></tr><tr><td>⬛ Black</td><td>أكثر من 90 يوم</td><td>عميل قديم لم يُصدر أي فاتورة — Reactivation فوري + تصعيد للTeam Leadـ </td></tr></tbody>
         </table>
-
         <h4 class="sec-title">📐 المعايير حسب القطاع (بناءً على آخر فاتورة)</h4>
         <div class="sector-tabs">
           <button class="stab active" onclick="showSector(this,'fb')">🍕 F&B</button>
@@ -1752,33 +1714,27 @@ Maturity الحالي: [رقم]
         <div id="hs-fb" class="hs-tab"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 15 يوم</td><td>آخر فاتورة 8–15 يوم</td></tr><tr><td>🟠 Orange</td><td>16 – 30 يوم</td><td>آخر فاتورة 16–30 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 30 يوم</td><td>آخر فاتورة > 30 يوم</td></tr></tbody></table></div>
         <div id="hs-retail" class="hs-tab" style="display:none"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 30 يوم</td><td>آخر فاتورة 8–30 يوم</td></tr><tr><td>🟠 Orange</td><td>31 – 60 يوم</td><td>آخر فاتورة 31–60 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 60 يوم</td><td>آخر فاتورة > 60 يوم</td></tr></tbody></table></div>
         <div id="hs-svc" class="hs-tab" style="display:none"><table class="health-tbl"><thead><tr><th>اللون</th><th>المدة</th><th>المعنى</th></tr></thead><tbody><tr><td>🟢 Green</td><td>خلال 7 أيام</td><td>آخر فاتورة ≤ 7 أيام</td></tr><tr><td>🟡 Yellow</td><td>8 – 45 يوم</td><td>آخر فاتورة 8–45 يوم</td></tr><tr><td>🟠 Orange</td><td>46 – 90 يوم</td><td>آخر فاتورة 46–90 يوم</td></tr><tr><td>🔴 Red</td><td>أكثر من 90 يوم</td><td>آخر فاتورة > 90 يوم</td></tr></tbody></table></div>
-
         <h4 class="sec-title" style="margin-top:18px">🎯 الإجراء المطلوب من الموظف لكل لون</h4>
         <table class="health-tbl">
           <thead><tr><th>اللون</th><th>الإجراء المطلوب</th></tr></thead>
           <tbody><tr><td>🟢 Green</td><td>متابعة دورية — ادفع نحو النمو وزيادة الاستخدام</td></tr><tr><td>🟡 Yellow</td><td>تواصل خلال 48 ساعة + اعرف السبب + سجّل في CRM</td></tr><tr><td>🟠 Orange</td><td>تواصل فوري + تصعيد للـ Team Lead + نوت واضحة </td></tr><tr><td>🔴 Red</td><td>Reactivation Plan فوري + تصعيد</td></tr><tr><td>⚫ Grey</td><td>متابعة Inventory + Training + دفع للتفعيل</td></tr><tr><td>⬛ Black</td><td>Reactivation فوري + تصعيد — لا يُترك بدون إجراء</td></tr></tbody>
         </table>
-
       </div>
     </section>
-
   <footer class="doc-footer" dir="rtl">
     <div class="footer-icon">🎓</div>
     <div class="footer-title">أكاديمية نجاح العملاء — Rewaa</div>
     <div class="footer-meta">المرجع التشغيلي الكامل &nbsp;|&nbsp; إعداد: قسم الجودة &nbsp;|&nbsp; Q2 2026 &nbsp;|&nbsp; الإصدار 2.0</div>
     <div class="footer-note">لأي تعديل أو إضافة — تواصل مع قسم الجودة. هذا المرجع يُحدَّث بشكل دوري.</div>
   </footer>
-
 </div>
 <script>
-
   function pickSs(el) {
     var siblings = el.parentNode.querySelectorAll('.ss-pick-item');
     var wasSelected = el.classList.contains('selected');
     siblings.forEach(function(s) { s.classList.remove('selected'); });
     if (!wasSelected) el.classList.add('selected');
   }
-
   function copyTpl(btn) {
     const text = btn.getAttribute('data-text').replace(/&#10;/g, '\n');
     navigator.clipboard.writeText(text).then(() => {
@@ -1800,7 +1756,6 @@ Maturity الحالي: [رقم]
       a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
     });
   });
-
   function showSector(btn, id) {
     document.querySelectorAll('.hs-tab').forEach(function(t) { t.style.display = 'none'; });
     document.getElementById('hs-' + id).style.display = '';
@@ -1809,4 +1764,4 @@ Maturity الحالي: [رقم]
   }
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+</html>
